@@ -52,18 +52,18 @@ const players = [
   { name: "Sníp3r", points: 0 },
   { name: "Spomie", points: 0 },
   { name: "Sprout", points: 2.3 },
-  { name: "Sr. White :)", points: 0 },
+  { name: "Sr. White :) ", points: 0 },
   { name: "Thxr<3", points: 2.3 },
   { name: "Tiago70", points: 2.3 },
-  { name: "Volpirs", points: 7 },
-  { name: "Wolf", points: 1 }
+  { name: "Volpirs", points: 8 },
+  { name: "Wolf", points: 0 }
 ];
 
-// Função para renderizar o placar
-function renderScoreboard(order = "points") {
-  let previousPositions = {};
+// Guardar posições e pontos anteriores
+let previousPositions = {};
 let previousPoints = {};
 
+// Função para renderizar o placar
 function renderScoreboard() {
   // Ordena do maior para o menor
   players.sort((a, b) => b.points - a.points);
@@ -102,38 +102,5 @@ function renderScoreboard() {
   });
 }
 
-  // Descobre os 3 maiores valores de pontos
-  const uniqueScores = [...new Set(sortedPlayers.map(p => p.points))].sort((a, b) => b - a);
-  const topScores = uniqueScores.slice(0, 3); // ex: [22, 20, 13.3]
-
-  sortedPlayers.forEach((player, index) => {
-    const row = document.createElement("tr");
-
-    let medal = "";
-    if (order === "points") {
-      if (player.points === topScores[0]) medal = "🥇";
-      else if (player.points === topScores[1]) medal = "🥈";
-      else if (player.points === topScores[2]) medal = "🥉";
-    }
-
-    row.innerHTML = `
-      <td>${order === "points" ? index + 1 + "º" : "-"}</td>
-      <td>${medal} ${player.name}</td>
-      <td>${player.points}</td>
-    `;
-
-    tbody.appendChild(row);
-  });
-}
-
-// Inicializa em ordem de pontos
-renderScoreboard("points");
-
-// Funções para botões
-function sortByPoints() {
-  renderScoreboard("points");
-}
-
-function sortAlphabetically() {
-  renderScoreboard("name");
-}
+// Atualiza o placar ao carregar a página
+renderScoreboard();
