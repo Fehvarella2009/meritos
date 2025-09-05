@@ -80,20 +80,41 @@ function renderScoreboard() {
 
     const row = document.createElement("tr");
 
+     // Descobre os 3 maiores valores de pontos
+  const uniqueScores = [...new Set(sortedPlayers.map(p => p.points))].sort((a, b) => b - a);
+  const topScores = uniqueScores.slice(0, 3); // ex: [22, 20, 13.3]
+
+  sortedPlayers.forEach((player, index) => {
+    const row = document.createElement("tr");
+
     let medal = "";
-    if (!alphabeticalView) {
-      if (originalPosition === 1) medal = "🥇 ";
-      else if (originalPosition === 2) medal = "🥈 ";
-      else if (originalPosition === 3) medal = "🥉 ";
+    if (order === "points") {
+      if (player.points === topScores[0]) medal = "🥇";
+      else if (player.points === topScores[1]) medal = "🥈";
+      else if (player.points === topScores[2]) medal = "🥉";
     }
 
     row.innerHTML = `
-      <td>${originalPosition}º</td>
-      <td>${medal}${player.name}</td>
+      <td>${order === "points" ? index + 1 + "º" : "-"}</td>
+      <td>${medal} ${player.name}</td>
       <td>${player.points}</td>
     `;
+
     tbody.appendChild(row);
   });
+}
+
+// Inicializa em ordem de pontos
+renderScoreboard("points");
+
+// Funções para botões
+function sortByPoints() {
+  renderScoreboard("points");
+}
+
+function sortAlphabetically() {
+  renderScoreboard("name");
+}
 }
 
 // Botão para alternar ordenação
