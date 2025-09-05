@@ -30,3 +30,10 @@ function renderScoreboard() {
 
 // Atualiza o placar
 renderScoreboard();
+
+<h2>📊 Tabelas de Méritos</h2>
+<div class="merito-container">
+  <img src="merito1.png" alt="Tabela de Mérito 1">
+  <img src="merito2.png" alt="Tabela de Mérito 2">
+  <img src="merito3.png" alt="Tabela de Mérito 3">
+</div>
