@@ -1,6 +1,6 @@
 // Lista de jogadores do Real Value (pontos zerados)
 const players = [
-  { name: "Fernando", points: 21 },
+  { name: "Fernando", points: 119 },
   { name: "Geovanna", points: 2 },
   { name: "Eduardo", points: 17 },
   { name: "Lívia", points: 12 },
