@@ -1,4 +1,3 @@
-// Lista de jogadores do Real Value
 const players = [
   { name: "AnnaVedder", points: 7 },
   { name: "Arctibax", points: 8 },
@@ -59,33 +58,28 @@ const players = [
   { name: "Wolf", points: 0 }
 ];
 
-// Guardar posições e pontos anteriores
 let previousPositions = {};
 let previousPoints = {};
 
-// Função para renderizar o placar
-function renderScoreboard() {
-  // Ordena do maior para o menor
-  players.sort((a, b) => b.points - a.points);
+document.addEventListener("DOMContentLoaded", () => {
+  renderScoreboard();
+});
 
+function renderScoreboard() {
   const tbody = document.querySelector("#scoreboard tbody");
-  tbody.innerHTML = ""; // limpa antes de renderizar
+  if (!tbody) return; // evita erro se tbody não existir
+
+  players.sort((a, b) => b.points - a.points);
+  tbody.innerHTML = "";
 
   players.forEach((player, index) => {
     const pos = index + 1;
     const row = document.createElement("tr");
 
-    // Checa se já existia registro anterior
     if (previousPositions[player.name]) {
       if (previousPoints[player.name] !== player.points) {
-        // Subiu posição
-        if (previousPositions[player.name] > pos) {
-          row.classList.add("rise");
-        }
-        // Caiu posição
-        else if (previousPositions[player.name] < pos) {
-          row.classList.add("fall");
-        }
+        if (previousPositions[player.name] > pos) row.classList.add("rise");
+        else if (previousPositions[player.name] < pos) row.classList.add("fall");
       }
     }
 
@@ -96,11 +90,7 @@ function renderScoreboard() {
     `;
     tbody.appendChild(row);
 
-    // Atualiza posição e pontos armazenados
     previousPositions[player.name] = pos;
     previousPoints[player.name] = player.points;
   });
 }
-
-// Atualiza o placar ao carregar a página
-renderScoreboard();
