@@ -1,10 +1,10 @@
 // Lista de jogadores e pontos
 const players = [
-  { name: "Fernando", points: 120 },
-  { name: "Geovanna", points: 95 },
-  { name: "Eduardo", points: 150 },
-  { name: "Lívia", points: 80 },
-  { name: "Manuela", points: 110 }
+  { name: "FrostSnow", points: 120 },
+  { name: "IceFox", points: 95 },
+  { name: "Asky", points: 150 },
+  { name: "Sprout", points: 80 },
+  { name: "Ygor BB", points: 110 }
 ];
 
 // Função para renderizar a tabela
