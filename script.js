@@ -59,60 +59,51 @@ const players = [
   { name: "Wolf", points: 0 }
 ];
 
-let alphabeticalView = false; // alternar ordem
+// Função para renderizar o placar
+function renderScoreboard(order = "points") {
+  let sortedPlayers = [...players];
 
-function renderScoreboard() {
+  if (order === "points") {
+    sortedPlayers.sort((a, b) => b.points - a.points);
+  } else {
+    sortedPlayers.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
   const tbody = document.querySelector("#scoreboard tbody");
   tbody.innerHTML = "";
 
-  let displayPlayers;
-  if (alphabeticalView) {
-    displayPlayers = [...players].sort((a, b) => a.name.localeCompare(b.name));
-  } else {
-    displayPlayers = [...players].sort((a, b) => b.points - a.points);
-  }
+  // Descobre os 3 maiores valores de pontos
+  const uniqueScores = [...new Set(sortedPlayers.map(p => p.points))].sort((a, b) => b - a);
+  const topScores = uniqueScores.slice(0, 3); // ex: [22, 20, 13.3]
 
-  displayPlayers.forEach((player, index) => {
-    const originalPosition = players
-      .slice()
-      .sort((a, b) => b.points - a.points)
-      .findIndex(p => p.name === player.name) + 1;
-
+  sortedPlayers.forEach((player, index) => {
     const row = document.createElement("tr");
 
     let medal = "";
-    if (!alphabeticalView) {
-      if (originalPosition === 1) medal = "🥇 ";
-      else if (originalPosition === 2) medal = "🥈 ";
-      else if (originalPosition === 3) medal = "🥉 ";
+    if (order === "points") {
+      if (player.points === topScores[0]) medal = "🥇";
+      else if (player.points === topScores[1]) medal = "🥈";
+      else if (player.points === topScores[2]) medal = "🥉";
     }
 
     row.innerHTML = `
-      <td>${originalPosition}º</td>
-      <td>${medal}${player.name}</td>
+      <td>${order === "points" ? index + 1 + "º" : "-"}</td>
+      <td>${medal} ${player.name}</td>
       <td>${player.points}</td>
     `;
+
     tbody.appendChild(row);
   });
 }
 
-// Botão para alternar ordenação
-document.getElementById("toggleOrder").addEventListener("click", () => {
-  alphabeticalView = !alphabeticalView;
-  document.getElementById("toggleOrder").textContent = alphabeticalView
-    ? "Voltar à ordem por pontos"
-    : "Ordenar alfabeticamente";
-  renderScoreboard();
-});
+// Inicializa em ordem de pontos
+renderScoreboard("points");
 
-// Botão para alternar tema
-document.getElementById("toggleTheme").addEventListener("click", () => {
-  document.body.classList.toggle("light-mode");
-  document.getElementById("toggleTheme").textContent =
-    document.body.classList.contains("light-mode")
-      ? "🌑 Mudar tema"
-      : "🌙 Mudar tema";
-});
+// Funções para botões
+function sortByPoints() {
+  renderScoreboard("points");
+}
 
-// Renderiza ao carregar
-renderScoreboard();
+function sortAlphabetically() {
+  renderScoreboard("name");
+}
