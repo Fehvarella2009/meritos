@@ -135,24 +135,3 @@ footer {
 .light-mode tr:nth-child(even) { background: #f9f9f9; }
 .light-mode tr:nth-child(odd) { background: #fff; }
 
-/* Animação quando sobe no ranking */
-.rise {
-  animation: highlightRise 1.5s ease;
-}
-
-@keyframes highlightRise {
-  0% { background-color: #fff3cd; }  /* amarelo claro */
-  50% { background-color: #ffe066; } /* amarelo forte */
-  100% { background-color: transparent; }
-}
-
-/* Animação quando cai no ranking */
-.fall {
-  animation: highlightFall 1.5s ease;
-}
-
-@keyframes highlightFall {
-  0% { background-color: #f8d7da; }  /* vermelho claro */
-  50% { background-color: #f28b82; } /* vermelho forte */
-  100% { background-color: transparent; }
-}
