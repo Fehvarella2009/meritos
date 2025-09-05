@@ -37,3 +37,18 @@ tr:nth-child(even) {
 tr:hover {
   background: #44445a;
 }
+
+.merito-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.merito-container img {
+  max-width: 300px; /* tamanho máximo da imagem */
+  width: 100%;
+  border: 2px solid gold;
+  border-radius: 10px;
+}
