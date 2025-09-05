@@ -1,6 +1,6 @@
 // Lista de jogadores do Real Value (com pontos)
 const players = [
-  { name: "FrostSnow", points: 119 },
+  { name: "FrostSnow", points: 19.3 },
   { name: "Joses", points: 2 },
   { name: "Sprout", points: 17 },
   { name: "Asky", points: 12 },
