@@ -14,15 +14,22 @@ const players = [
   { name: "LettyLetuce", points: 11 }
 ];
 
+let alphabeticalOrder = false; // controle da ordenação
+
 // Função para renderizar o placar
 function renderScoreboard() {
-  // Ordena do maior para o menor
-  players.sort((a, b) => b.points - a.points);
+  const sortedPlayers = [...players]; // cria cópia para não alterar o original
+
+  if (alphabeticalOrder) {
+    sortedPlayers.sort((a, b) => a.name.localeCompare(b.name));
+  } else {
+    sortedPlayers.sort((a, b) => b.points - a.points);
+  }
 
   const tbody = document.querySelector("#scoreboard tbody");
   tbody.innerHTML = ""; // limpa antes de renderizar
 
-  players.forEach((player, index) => {
+  sortedPlayers.forEach((player, index) => {
     const row = document.createElement("tr");
     row.innerHTML = `
       <td>${index + 1}º</td>
@@ -32,6 +39,15 @@ function renderScoreboard() {
     tbody.appendChild(row);
   });
 }
+
+// Botão para alternar ordenação
+document.getElementById("toggleOrder").addEventListener("click", () => {
+  alphabeticalOrder = !alphabeticalOrder;
+  document.getElementById("toggleOrder").textContent = alphabeticalOrder
+    ? "Ordenar por pontos"
+    : "Ordenar alfabeticamente";
+  renderScoreboard();
+});
 
 // Atualiza o placar ao carregar a página
 renderScoreboard();
