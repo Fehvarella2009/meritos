@@ -1,17 +1,17 @@
 // Lista de jogadores do Real Value (pontos zerados)
 const players = [
-  { name: "Fernando", points: 119 },
-  { name: "Geovanna", points: 2 },
-  { name: "Eduardo", points: 17 },
-  { name: "Lívia", points: 12 },
-  { name: "Manuela", points: 3 },
-  { name: "Davi", points: 4 },
-  { name: "Aparecida", points: 8 },
-  { name: "Pietra", points: 9 },
-  { name: "Natally", points: 15 },
-  { name: "Xiao-Jun", points: 4 },
-  { name: "Camila", points: 5 },
-  { name: "Maju", points: 11 }
+  { name: "FrostSnow", points: 119 },
+  { name: "Joses", points: 2 },
+  { name: "Sprout", points: 17 },
+  { name: "Asky", points: 12 },
+  { name: "Icefox", points: 3 },
+  { name: "Mika", points: 4 },
+  { name: "Sarvitar", points: 8 },
+  { name: "Autobot", points: 9 },
+  { name: "Ygor BB", points: 15 },
+  { name: "Coragemthedog", points: 4 },
+  { name: "Tiago70", points: 5 },
+  { name: "LettyLetuce", points: 11 }
 ];
 
 // Função para renderizar o placar
