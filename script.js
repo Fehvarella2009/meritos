@@ -1,13 +1,14 @@
-// Lista de jogadores e pontos
+// Lista de jogadores do Real Value (coloque os pontos reais depois)
 const players = [
-  { name: "FrostSnow", points: 120 },
-  { name: "IceFox", points: 95 },
-  { name: "Asky", points: 150 },
-  { name: "Sprout", points: 80 },
-  { name: "Ygor BB", points: 110 }
+  { name: "FrostSnow", points: 18 },
+  { name: "Ygor BB", points: 12 },
+  { name: "Asky", points: 8 },
+  { name: "Sprout", points: 21,5 },
+  { name: "Icefox", points: 11 },
+  // Adicione mais nomes aqui se necessário
 ];
 
-// Função para renderizar a tabela
+// Função para renderizar o placar
 function renderScoreboard() {
   // Ordena do maior para o menor
   players.sort((a, b) => b.points - a.points);
@@ -30,10 +31,3 @@ function renderScoreboard() {
 
 // Atualiza o placar
 renderScoreboard();
-
-<h2>📊 Tabelas de Méritos</h2>
-<div class="merito-container">
-  <img src="merito1.png" alt="Tabela de Mérito 1">
-  <img src="merito2.png" alt="Tabela de Mérito 2">
-  <img src="merito3.png" alt="Tabela de Mérito 3">
-</div>
