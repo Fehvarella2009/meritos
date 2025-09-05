@@ -1,4 +1,4 @@
-// Lista de jogadores do Real Value (pontos zerados)
+// Lista de jogadores do Real Value (com pontos)
 const players = [
   { name: "FrostSnow", points: 119 },
   { name: "Joses", points: 2 },
@@ -14,25 +14,33 @@ const players = [
   { name: "LettyLetuce", points: 11 }
 ];
 
-let alphabeticalOrder = false; // controle da ordenação
+let alphabeticalView = false; // true = apenas exibir alfabeticamente
 
 // Função para renderizar o placar
 function renderScoreboard() {
-  const sortedPlayers = [...players]; // cria cópia para não alterar o original
+  const tbody = document.querySelector("#scoreboard tbody");
+  tbody.innerHTML = "";
 
-  if (alphabeticalOrder) {
-    sortedPlayers.sort((a, b) => a.name.localeCompare(b.name));
+  let displayPlayers;
+
+  if (alphabeticalView) {
+    // Apenas exibe em ordem alfabética, mas mantém a posição original
+    displayPlayers = [...players].sort((a, b) => a.name.localeCompare(b.name));
   } else {
-    sortedPlayers.sort((a, b) => b.points - a.points);
+    // Ordem normal por pontos (decrescente)
+    displayPlayers = [...players].sort((a, b) => b.points - a.points);
   }
 
-  const tbody = document.querySelector("#scoreboard tbody");
-  tbody.innerHTML = ""; // limpa antes de renderizar
+  displayPlayers.forEach(player => {
+    // Mantém a posição original por pontos, mesmo na visualização alfabética
+    const originalPosition = players
+      .slice()
+      .sort((a, b) => b.points - a.points)
+      .findIndex(p => p.name === player.name) + 1;
 
-  sortedPlayers.forEach((player, index) => {
     const row = document.createElement("tr");
     row.innerHTML = `
-      <td>${index + 1}º</td>
+      <td>${originalPosition}º</td>
       <td>${player.name}</td>
       <td>${player.points}</td>
     `;
@@ -40,14 +48,14 @@ function renderScoreboard() {
   });
 }
 
-// Botão para alternar ordenação
+// Botão para alternar visualização
 document.getElementById("toggleOrder").addEventListener("click", () => {
-  alphabeticalOrder = !alphabeticalOrder;
-  document.getElementById("toggleOrder").textContent = alphabeticalOrder
-    ? "Ordenar por pontos"
+  alphabeticalView = !alphabeticalView;
+  document.getElementById("toggleOrder").textContent = alphabeticalView
+    ? "Voltar à ordem por pontos"
     : "Ordenar alfabeticamente";
   renderScoreboard();
 });
 
-// Atualiza o placar ao carregar a página
+// Renderiza ao carregar a página
 renderScoreboard();
