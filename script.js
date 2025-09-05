@@ -81,11 +81,14 @@ function renderScoreboard() {
     const row = document.createElement("tr");
 
     let medal = "";
-    if (!alphabeticalView) {
-      if (originalPosition === 1) medal = "🥇 ";
-      else if (originalPosition === 2) medal = "🥈 ";
-      else if (originalPosition === 3) medal = "🥉 ";
-    }
+if (!alphabeticalView) {
+  // Obter as pontuações únicas em ordem decrescente
+  const topScores = [...new Set(players.map(p => p.points))].sort((a, b) => b - a);
+
+  if (player.points === topScores[0]) medal = "🥇 ";
+  else if (player.points === topScores[1]) medal = "🥈 ";
+  else if (player.points === topScores[2]) medal = "🥉 ";
+}
 
     row.innerHTML = `
       <td>${originalPosition}º</td>
