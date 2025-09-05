@@ -61,16 +61,46 @@ const players = [
 
 // Função para renderizar o placar
 function renderScoreboard(order = "points") {
-  let sortedPlayers = [...players];
+  let previousPositions = {};
+let previousPoints = {};
 
-  if (order === "points") {
-    sortedPlayers.sort((a, b) => b.points - a.points);
-  } else {
-    sortedPlayers.sort((a, b) => a.name.localeCompare(b.name));
-  }
+function renderScoreboard() {
+  // Ordena do maior para o menor
+  players.sort((a, b) => b.points - a.points);
 
   const tbody = document.querySelector("#scoreboard tbody");
-  tbody.innerHTML = "";
+  tbody.innerHTML = ""; // limpa antes de renderizar
+
+  players.forEach((player, index) => {
+    const pos = index + 1;
+    const row = document.createElement("tr");
+
+    // Checa se já existia registro anterior
+    if (previousPositions[player.name]) {
+      if (previousPoints[player.name] !== player.points) {
+        // Subiu posição
+        if (previousPositions[player.name] > pos) {
+          row.classList.add("rise");
+        }
+        // Caiu posição
+        else if (previousPositions[player.name] < pos) {
+          row.classList.add("fall");
+        }
+      }
+    }
+
+    row.innerHTML = `
+      <td>${pos}º</td>
+      <td>${player.name}</td>
+      <td>${player.points}</td>
+    `;
+    tbody.appendChild(row);
+
+    // Atualiza posição e pontos armazenados
+    previousPositions[player.name] = pos;
+    previousPoints[player.name] = player.points;
+  });
+}
 
   // Descobre os 3 maiores valores de pontos
   const uniqueScores = [...new Set(sortedPlayers.map(p => p.points))].sort((a, b) => b - a);
