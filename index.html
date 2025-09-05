@@ -7,13 +7,20 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Logo no topo -->
   <div class="logo-container">
-  <img src="logotipo.png" alt="Real Value Logo" class="logo">
+    <img src="logotipo.png" alt="Real Value Logo" class="logo">
   </div>
+
   <h1>🏆 Placar de Méritos - Real Value</h1>
 
-  <button id="toggleOrder">Ordenar alfabeticamente</button>
+  <!-- Botões de controle -->
+  <div class="controls">
+    <button id="toggleOrder">Ordenar alfabeticamente</button>
+    <button id="toggleTheme">🌙 Mudar tema</button>
+  </div>
 
+  <!-- Placar -->
   <table id="scoreboard">
     <thead>
       <tr>
@@ -27,12 +34,18 @@
     </tbody>
   </table>
 
+  <!-- Tabelas de Méritos -->
   <h2>📊 Tabelas de Méritos</h2>
   <div class="merito-container">
     <img src="merito1.png" alt="Tabela de Mérito 1">
     <img src="merito2.png" alt="Tabela de Mérito 2">
     <img src="merito3.png" alt="Tabela de Mérito 3">
   </div>
+
+  <!-- Rodapé -->
+  <footer>
+    Real Value © 2025 – Todos os direitos reservados
+  </footer>
 
   <script src="script.js"></script>
 </body>
