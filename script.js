@@ -1,4 +1,63 @@
-// Lista de jogadores do Real Value
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Placar de Méritos</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #000;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .dark-theme {
+    background-color: #121212;
+    color: #f0f0f0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  th {
+    background-color: #eee;
+  }
+  button {
+    margin-right: 10px;
+    margin-top: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<h1>Placar de Méritos</h1>
+<button id="btnPoints">Ordenar por Pontos</button>
+<button id="btnAlpha">Ordenar Alfabeticamente</button>
+<button id="btnTheme">Mudar Tema</button>
+
+<table id="scoreboard">
+  <thead>
+    <tr>
+      <th>Posição</th>
+      <th>Nome</th>
+      <th>Pontos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Linhas serão inseridas pelo JS -->
+  </tbody>
+</table>
+
+<script>
+// Lista de jogadores
 const players = [
   { name: "AnnaVedder", points: 7 },
   { name: "Arctibax", points: 8 },
@@ -59,7 +118,7 @@ const players = [
   { name: "Wolf", points: 0 }
 ];
 
-// Função para renderizar o placar
+// Renderiza o placar
 function renderScoreboard(order = "points") {
   let sortedPlayers = [...players];
 
@@ -74,7 +133,7 @@ function renderScoreboard(order = "points") {
 
   // Descobre os 3 maiores valores de pontos
   const uniqueScores = [...new Set(sortedPlayers.map(p => p.points))].sort((a, b) => b - a);
-  const topScores = uniqueScores.slice(0, 3); // ex: [22, 20, 13.3]
+  const topScores = uniqueScores.slice(0, 3);
 
   sortedPlayers.forEach((player, index) => {
     const row = document.createElement("tr");
@@ -99,7 +158,7 @@ function renderScoreboard(order = "points") {
 // Inicializa em ordem de pontos
 renderScoreboard("points");
 
-// Funções para botões
+// Funções dos botões
 function sortByPoints() {
   renderScoreboard("points");
 }
@@ -107,3 +166,16 @@ function sortByPoints() {
 function sortAlphabetically() {
   renderScoreboard("name");
 }
+
+function toggleTheme() {
+  document.body.classList.toggle("dark-theme");
+}
+
+// Liga os botões
+document.getElementById("btnPoints").addEventListener("click", sortByPoints);
+document.getElementById("btnAlpha").addEventListener("click", sortAlphabetically);
+document.getElementById("btnTheme").addEventListener("click", toggleTheme);
+</script>
+
+</body>
+</html>
