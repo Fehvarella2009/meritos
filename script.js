@@ -1,63 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Placar de Méritos</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #fff;
-    color: #000;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  .dark-theme {
-    background-color: #121212;
-    color: #f0f0f0;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  th, td {
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    text-align: left;
-  }
-  th {
-    background-color: #eee;
-  }
-  button {
-    margin-right: 10px;
-    margin-top: 10px;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-</style>
-</head>
-<body>
-
-<h1>Placar de Méritos</h1>
-<button id="btnPoints">Ordenar por Pontos</button>
-<button id="btnAlpha">Ordenar Alfabeticamente</button>
-<button id="btnTheme">Mudar Tema</button>
-
-<table id="scoreboard">
-  <thead>
-    <tr>
-      <th>Posição</th>
-      <th>Nome</th>
-      <th>Pontos</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- Linhas serão inseridas pelo JS -->
-  </tbody>
-</table>
-
-<script>
-// Lista de jogadores
+// Lista de jogadores do Real Value
 const players = [
   { name: "AnnaVedder", points: 7 },
   { name: "Arctibax", points: 8 },
@@ -118,64 +59,60 @@ const players = [
   { name: "Wolf", points: 0 }
 ];
 
-// Renderiza o placar
-function renderScoreboard(order = "points") {
-  let sortedPlayers = [...players];
+let alphabeticalView = false; // alternar ordem
 
-  if (order === "points") {
-    sortedPlayers.sort((a, b) => b.points - a.points);
-  } else {
-    sortedPlayers.sort((a, b) => a.name.localeCompare(b.name));
-  }
-
+function renderScoreboard() {
   const tbody = document.querySelector("#scoreboard tbody");
   tbody.innerHTML = "";
 
-  // Descobre os 3 maiores valores de pontos
-  const uniqueScores = [...new Set(sortedPlayers.map(p => p.points))].sort((a, b) => b - a);
-  const topScores = uniqueScores.slice(0, 3);
+  let displayPlayers;
+  if (alphabeticalView) {
+    displayPlayers = [...players].sort((a, b) => a.name.localeCompare(b.name));
+  } else {
+    displayPlayers = [...players].sort((a, b) => b.points - a.points);
+  }
 
-  sortedPlayers.forEach((player, index) => {
+  displayPlayers.forEach((player, index) => {
+    const originalPosition = players
+      .slice()
+      .sort((a, b) => b.points - a.points)
+      .findIndex(p => p.name === player.name) + 1;
+
     const row = document.createElement("tr");
 
     let medal = "";
-    if (order === "points") {
-      if (player.points === topScores[0]) medal = "🥇";
-      else if (player.points === topScores[1]) medal = "🥈";
-      else if (player.points === topScores[2]) medal = "🥉";
+    if (!alphabeticalView) {
+      if (originalPosition === 1) medal = "🥇 ";
+      else if (originalPosition === 2) medal = "🥈 ";
+      else if (originalPosition === 3) medal = "🥉 ";
     }
 
     row.innerHTML = `
-      <td>${order === "points" ? index + 1 + "º" : "-"}</td>
-      <td>${medal} ${player.name}</td>
+      <td>${originalPosition}º</td>
+      <td>${medal}${player.name}</td>
       <td>${player.points}</td>
     `;
-
     tbody.appendChild(row);
   });
 }
 
-// Inicializa em ordem de pontos
-renderScoreboard("points");
+// Botão para alternar ordenação
+document.getElementById("toggleOrder").addEventListener("click", () => {
+  alphabeticalView = !alphabeticalView;
+  document.getElementById("toggleOrder").textContent = alphabeticalView
+    ? "Voltar à ordem por pontos"
+    : "Ordenar alfabeticamente";
+  renderScoreboard();
+});
 
-// Funções dos botões
-function sortByPoints() {
-  renderScoreboard("points");
-}
+// Botão para alternar tema
+document.getElementById("toggleTheme").addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+  document.getElementById("toggleTheme").textContent =
+    document.body.classList.contains("light-mode")
+      ? "🌑 Mudar tema"
+      : "🌙 Mudar tema";
+});
 
-function sortAlphabetically() {
-  renderScoreboard("name");
-}
-
-function toggleTheme() {
-  document.body.classList.toggle("dark-theme");
-}
-
-// Liga os botões
-document.getElementById("btnPoints").addEventListener("click", sortByPoints);
-document.getElementById("btnAlpha").addEventListener("click", sortAlphabetically);
-document.getElementById("btnTheme").addEventListener("click", toggleTheme);
-</script>
-
-</body>
-</html>
+// Renderiza ao carregar
+renderScoreboard();
