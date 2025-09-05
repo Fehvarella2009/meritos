@@ -55,8 +55,8 @@ const players = [
   { name: "Sr. White :)", points: 0 },
   { name: "Thxr<3", points: 2.3 },
   { name: "Tiago70", points: 2.3 },
-  { name: "Volpirs", points: 8 },
-  { name: "Wolf", points: 0 }
+  { name: "Volpirs", points: 7 },
+  { name: "Wolf", points: 1 }
 ];
 
 // Função para renderizar o placar
