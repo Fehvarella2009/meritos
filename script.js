@@ -11,6 +11,7 @@ const players = [
   { name: "Ygor BB", points: 15 },
   { name: "Coragemthedog", points: 4 },
   { name: "Tiago70", points: 5 },
+  { name: "Lipexz", points: 19.2 },
   { name: "LettyLetuce", points: 11 }
 ];
 
