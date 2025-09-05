@@ -1,6 +1,6 @@
-// Lista de jogadores do Real Value (com pontos)
+// Lista de jogadores do Real Value
 const players = [
-  { name: "FrostSnow", points: 19.3 },
+  { name: "FrostSnow", points: 119 },
   { name: "Joses", points: 2 },
   { name: "Sprout", points: 17 },
   { name: "Asky", points: 12 },
@@ -14,14 +14,13 @@ const players = [
   { name: "LettyLetuce", points: 11 }
 ];
 
-let alphabeticalView = false; // true = apenas exibir alfabeticamente
+let alphabeticalView = false; // alternar ordem
 
 function renderScoreboard() {
   const tbody = document.querySelector("#scoreboard tbody");
   tbody.innerHTML = "";
 
   let displayPlayers;
-
   if (alphabeticalView) {
     displayPlayers = [...players].sort((a, b) => a.name.localeCompare(b.name));
   } else {
@@ -36,28 +35,23 @@ function renderScoreboard() {
 
     const row = document.createElement("tr");
 
+    let medal = "";
     if (!alphabeticalView) {
-      // Cores top 3
-      if (originalPosition === 1) row.style.background = "gold";
-      else if (originalPosition === 2) row.style.background = "silver";
-      else if (originalPosition === 3) row.style.background = "#cd7f32";
-      else if (index % 2 !== 0) row.style.background = "#2a2a3f";
-      else row.style.background = "#2c2c3a";
-    } else {
-      // Ordem alfabética padrão sem cores especiais
-      row.style.background = index % 2 !== 0 ? "#2a2a3f" : "#2c2c3a";
+      if (originalPosition === 1) medal = "🥇 ";
+      else if (originalPosition === 2) medal = "🥈 ";
+      else if (originalPosition === 3) medal = "🥉 ";
     }
 
     row.innerHTML = `
       <td>${originalPosition}º</td>
-      <td>${player.name}</td>
+      <td>${medal}${player.name}</td>
       <td>${player.points}</td>
     `;
     tbody.appendChild(row);
   });
 }
 
-// Botão para alternar visualização
+// Botão para alternar ordenação
 document.getElementById("toggleOrder").addEventListener("click", () => {
   alphabeticalView = !alphabeticalView;
   document.getElementById("toggleOrder").textContent = alphabeticalView
@@ -66,5 +60,14 @@ document.getElementById("toggleOrder").addEventListener("click", () => {
   renderScoreboard();
 });
 
-// Renderiza ao carregar a página
+// Botão para alternar tema
+document.getElementById("toggleTheme").addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+  document.getElementById("toggleTheme").textContent =
+    document.body.classList.contains("light-mode")
+      ? "🌑 Mudar tema"
+      : "🌙 Mudar tema";
+});
+
+// Renderiza ao carregar
 renderScoreboard();
