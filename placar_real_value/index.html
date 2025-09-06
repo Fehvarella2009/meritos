@@ -11,24 +11,26 @@
     <img src="Logo.png" alt="Logo Real Value" class="logo">
     <h1>🏆 Placar de Méritos - Real Value</h1>
     <div class="controls">
-      <button id="themeBtn" onclick="toggleTheme()">☀️ Modo Claro</button>
-      <button id="orderBtn" onclick="toggleOrder()">🔀 Ordenar A-Z</button>
+      <button id="themeBtn">☀️ Modo Claro</button>
+      <button id="orderBtn">🔀 Ordenar A-Z</button>
     </div>
   </header>
 
-  <table id="scoreboard">
-    <thead>
-      <tr>
-        <th>Posição</th>
-        <th>Jogador</th>
-        <th>Méritos</th>
-        <th>Frações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- preenchido via script.js -->
-    </tbody>
-  </table>
+  <div class="table-wrapper">
+    <table id="scoreboard">
+      <thead>
+        <tr>
+          <th>Posição</th>
+          <th>Jogador</th>
+          <th>Méritos</th>
+          <th>Frações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- preenchido via script.js -->
+      </tbody>
+    </table>
+  </div>
 
   <h2>📊 Tabelas de Méritos</h2>
   <div class="merito-container">
@@ -38,7 +40,7 @@
   </div>
 
   <footer>
-    <p>✨ Real Value Ltda. - Sistema de Méritos &copy; 2025 ✨</p>
+    <p> Real Value Ltda. - Sistema de Méritos &copy; 2025 </p>
   </footer>
 
   <script src="script.js"></script>
