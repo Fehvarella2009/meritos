@@ -5,7 +5,7 @@ body {
   color: #e0e0e0;
   text-align: center;
   margin: 0;
-  transition: background 0.4s, color 0.4s;
+  transition: background 0.3s, color 0.3s;
 }
 
 header {
@@ -48,89 +48,64 @@ button:hover {
   background: orange;
 }
 
-/* tabela suave, sem linhas verticais */
+/* tabela responsiva e sem scroll horizontal */
 table {
-  margin: 20px auto;
   border-collapse: collapse;
-  width: 100%;
-  max-width: 800px;
-  display: block;
-  overflow-x: auto; /* scroll horizontal se necessário */
-  box-shadow: 0 4px 8px rgba(255,255,255,0.05);
+  width: 95%;
+  margin: 20px auto;
 }
 
 th, td {
-  padding: 10px 15px;
+  padding: 10px 8px;
   text-align: center;
-  min-width: 80px;
-  border-bottom: none;
-  border-right: none;
 }
 
-/* cores alternadas neutras */
-tbody tr:nth-child(even) {
-  background-color: #1a2433;
-}
-
-tbody tr:nth-child(odd) {
-  background-color: #18202c;
-}
+/* linhas alternadas suaves */
+tbody tr:nth-child(even) { background-color: #1a2433; }
+tbody tr:nth-child(odd)  { background-color: #18202c; }
 
 th {
   background-color: #1f2a3b;
   color: #e0e0e0;
   font-weight: bold;
-  border-bottom: 2px solid #444;
 }
 
-/* hover leve nas linhas */
+/* hover leve */
 tbody tr:hover {
   transform: scale(1.02);
   background-color: #23314a;
+  transition: all 0.3s;
 }
 
-/* animação fade-in e fade-out */
-tbody tr.fade-out {
+/* animação fade-in das linhas */
+tbody tr {
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 0.2s, transform 0.2s;
+  transition: opacity 0.5s, transform 0.5s;
 }
 
-tbody tr.fade-in {
+tbody tr.visible {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.4s, transform 0.4s;
 }
 
-/* medalhas com brilho animado contínuo */
-@keyframes goldGlow {
-  0%, 100% { text-shadow: 0 0 5px #fff, 0 0 10px #fff; }
-  50% { text-shadow: 0 0 15px #ffd700, 0 0 25px #ffd700; }
-}
-.gold {
-  color: #ffd700;
-  font-weight: bold;
-  animation: goldGlow 2s infinite;
+/* medalhas com brilho */
+.gold { color: #ffd700; font-weight: bold; animation: glowGold 2s infinite alternate; }
+@keyframes glowGold {
+  from { text-shadow: 0 0 2px #fff; }
+  to   { text-shadow: 0 0 10px #ffd700; }
 }
 
-@keyframes silverGlow {
-  0%, 100% { text-shadow: 0 0 3px #fff, 0 0 6px #fff; }
-  50% { text-shadow: 0 0 10px #c0c0c0, 0 0 15px #c0c0c0; }
-}
-.silver {
-  color: #c0c0c0;
-  font-weight: bold;
-  animation: silverGlow 2s infinite;
+.silver { color: #c0c0c0; font-weight: bold; animation: glowSilver 2s infinite alternate; }
+@keyframes glowSilver {
+  from { text-shadow: 0 0 2px #fff; }
+  to   { text-shadow: 0 0 10px #c0c0c0; }
 }
 
-@keyframes bronzeGlow {
-  0%, 100% { text-shadow: 0 0 3px #fff, 0 0 6px #fff; }
-  50% { text-shadow: 0 0 10px #cd7f32, 0 0 15px #cd7f32; }
-}
-.bronze {
-  color: #cd7f32;
-  font-weight: bold;
-  animation: bronzeGlow 2s infinite;
+.bronze { color: #cd7f32; font-weight: bold; animation: glowBronze 2s infinite alternate; }
+@keyframes glowBronze {
+  from { text-shadow: 0 0 2px #fff; }
+  to   { text-shadow: 0 0 10px #cd7f32; }
 }
 
 /* imagens das tabelas */
