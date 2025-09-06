@@ -1,41 +1,41 @@
-// Lista oficial de jogadores (méritos e frações; 6 frações = 1 mérito)
+// Lista de jogadores com méritos + frações
 const players = [
   { name: "AnnaVedder", merits: 7, fractions: 0 },
   { name: "Arctibax", merits: 8, fractions: 0 },
   { name: "Arthur Gamer", merits: 8, fractions: 0 },
   { name: "Arthur", merits: 2, fractions: 0 },
-  { name: "Askyzz", merits: 13, fractions: 3 },
+  { name: "Askyzz", merits: 13, fractions: 2 },
   { name: "Bernardo 11", merits: 3, fractions: 0 },
   { name: "Boltzin", merits: 0, fractions: 0 },
   { name: "Borges", merits: 7, fractions: 0 },
   { name: "CoragemTheDog", merits: 5, fractions: 0 },
   { name: "Dark Jeff", merits: 3, fractions: 0 },
-  { name: "Deus Shelby", merits: 13, fractions: 3 },
+  { name: "Deus Shelby", merits: 13, fractions: 2 },
   { name: "Dex", merits: 2, fractions: 0 },
   { name: "Digopom", merits: 2, fractions: 0 },
   { name: "Dragon", merits: 5, fractions: 0 },
   { name: "Eberton", merits: 5, fractions: 0 },
-  { name: "Easy", merits: 11, fractions: 3 },
+  { name: "Easy", merits: 11, fractions: 2 },
   { name: "Fast", merits: 20, fractions: 0 },
   { name: "FgzSbau", merits: 1, fractions: 0 },
-  { name: "Firefox", merits: 4, fractions: 3 },
+  { name: "Firefox", merits: 4, fractions: 2 },
   { name: "Frederico", merits: 2, fractions: 3 },
-  { name: "FrostSnow", merits: 13, fractions: 3 },
+  { name: "FrostSnow", merits: 13, fractions: 2 },
   { name: "GeNiUs", merits: 22, fractions: 0 },
-  { name: "Gilmarcio", merits: 11, fractions: 3 },
+  { name: "Gilmarcio", merits: 11, fractions: 2 },
   { name: "Huya", merits: 3, fractions: 0 },
   { name: "Icefox", merits: 10, fractions: 0 },
-  { name: "Infinity", merits: 13, fractions: 3 },
+  { name: "Infinity", merits: 13, fractions: 2 },
   { name: "Jabu", merits: 2, fractions: 3 },
-  { name: "Jonny", merits: 4, fractions: 3 },
+  { name: "Jonny", merits: 4, fractions: 2 },
   { name: "Juniòór", merits: 8, fractions: 0 },
   { name: "Ka.y", merits: 1, fractions: 0 },
   { name: "K4lav3ra", merits: 8, fractions: 0 },
   { name: "Kevin☆", merits: 3, fractions: 0 },
-  { name: "Leonardo", merits: 11, fractions: 3 },
+  { name: "Leonardo", merits: 11, fractions: 2 },
   { name: "Levi", merits: 8, fractions: 0 },
   { name: "Letty lettuce", merits: 1, fractions: 0 },
-  { name: "Lilyuzumi", merits: 11, fractions: 3 },
+  { name: "Lilyuzumi", merits: 11, fractions: 2 },
   { name: "Lipexz", merits: 2, fractions: 0 },
   { name: "LéoMatsury", merits: 2, fractions: 3 },
   { name: "Luxuria", merits: 2, fractions: 3 },
@@ -59,79 +59,60 @@ const players = [
   { name: "Wolf", merits: 0, fractions: 0 }
 ];
 
-let currentOrder = "ranking";
-let previousPositions = {};
+let orderMode = "ranking"; // ranking ou alfabetico
 
-function setOrder(order) {
-  currentOrder = order;
-  renderTable();
-}
-
-function renderTable() {
-  const tableBody = document.querySelector("#scoreTable tbody");
-  tableBody.innerHTML = "";
+function renderScoreboard() {
+  const tbody = document.querySelector("#scoreboard tbody");
+  tbody.innerHTML = "";
 
   let sortedPlayers = [...players];
 
-  if (currentOrder === "ranking") {
-    sortedPlayers.sort((a, b) =>
-      (b.merits + b.fractions / 6) - (a.merits + a.fractions / 6)
-    );
+  if (orderMode === "ranking") {
+    sortedPlayers.sort((a, b) => (b.merits*6 + b.fractions) - (a.merits*6 + a.fractions));
   } else {
     sortedPlayers.sort((a, b) => a.name.localeCompare(b.name));
   }
 
-  // top 3 (considerando empates)
-  let topScores = [...new Set(sortedPlayers.map(p => p.merits + p.fractions / 6))]
-                  .sort((a, b) => b - a)
-                  .slice(0, 3);
+  let lastScore = null;
+  let position = 0;
 
   sortedPlayers.forEach((player, index) => {
-    const row = document.createElement("tr");
+    const totalFractions = player.merits*6 + player.fractions;
 
-    // posição / medalha
-    const posCell = document.createElement("td");
-    if (currentOrder === "ranking" && topScores.includes(player.merits + player.fractions / 6)) {
-      const medal = document.createElement("span");
-      if (topScores.indexOf(player.merits + player.fractions / 6) === 0) medal.textContent = "🥇";
-      if (topScores.indexOf(player.merits + player.fractions / 6) === 1) medal.textContent = "🥈";
-      if (topScores.indexOf(player.merits + player.fractions / 6) === 2) medal.textContent = "🥉";
-      posCell.appendChild(medal);
-    } else {
-      posCell.textContent = currentOrder === "alpha" ? "-" : index + 1;
-    }
-    row.appendChild(posCell);
-
-    // nome
-    const nameCell = document.createElement("td");
-    nameCell.textContent = player.name;
-    row.appendChild(nameCell);
-
-    // méritos
-    const meritsCell = document.createElement("td");
-    meritsCell.textContent = player.merits;
-    row.appendChild(meritsCell);
-
-    // frações
-    const fracCell = document.createElement("td");
-    fracCell.textContent = player.fractions;
-    row.appendChild(fracCell);
-
-    // animação se posição mudou
-    if (currentOrder === "ranking") {
-      const previousIndex = previousPositions[player.name];
-      if (previousIndex !== undefined && previousIndex !== index) {
-        if (previousIndex > index) {
-          row.classList.add("highlight-up");
-        } else {
-          row.classList.add("highlight-down");
-        }
+    if (orderMode === "ranking") {
+      if (totalFractions !== lastScore) {
+        position = index + 1;
+        lastScore = totalFractions;
       }
-      previousPositions[player.name] = index;
+    } else {
+      position = "-";
     }
 
-    tableBody.appendChild(row);
+    let medal = "";
+    if (orderMode === "ranking") {
+      if (position === 1) medal = "🥇";
+      else if (position === 2) medal = "🥈";
+      else if (position === 3) medal = "🥉";
+    }
+
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${orderMode === "ranking" ? position + "º" : "-"}</td>
+      <td>${player.name} ${medal}</td>
+      <td>${player.merits}</td>
+      <td>${player.fractions}</td>
+    `;
+    tbody.appendChild(row);
   });
 }
 
-renderTable();
+function toggleOrder() {
+  orderMode = orderMode === "ranking" ? "alphabetical" : "ranking";
+  renderScoreboard();
+}
+
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+}
+
+renderScoreboard();
