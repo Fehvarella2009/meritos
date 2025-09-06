@@ -7,20 +7,27 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>🏆 Placar de Méritos - Real Value</h1>
+  <header>
+    <img src="Logo.png" alt="Logo Real Value" class="logo">
+    <h1>🏆 Placar de Méritos - Real Value</h1>
+  </header>
 
-  <button id="toggleOrder">Ordenar alfabeticamente</button>
+  <div class="buttons">
+    <button onclick="setOrder('ranking')">Ordenar por Ranking</button>
+    <button onclick="setOrder('alpha')">Ordenar por Nome</button>
+  </div>
 
-  <table id="scoreboard">
+  <table id="scoreTable">
     <thead>
       <tr>
         <th>Posição</th>
         <th>Jogador</th>
-        <th>Pontos</th>
+        <th>Méritos</th>
+        <th>Frações</th>
       </tr>
     </thead>
     <tbody>
-      <!-- Conteúdo gerado via script.js -->
+      <!-- preenchido via script.js -->
     </tbody>
   </table>
 
