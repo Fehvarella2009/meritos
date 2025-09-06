@@ -10,14 +10,13 @@
   <header>
     <img src="Logo.png" alt="Logo Real Value" class="logo">
     <h1>🏆 Placar de Méritos - Real Value</h1>
+    <div class="controls">
+      <button onclick="toggleTheme()">🌙/☀️</button>
+      <button onclick="toggleOrder()">🔀 Ordenar</button>
+    </div>
   </header>
 
-  <div class="buttons">
-    <button onclick="setOrder('ranking')">Ordenar por Ranking</button>
-    <button onclick="setOrder('alpha')">Ordenar por Nome</button>
-  </div>
-
-  <table id="scoreTable">
+  <table id="scoreboard">
     <thead>
       <tr>
         <th>Posição</th>
@@ -30,13 +29,6 @@
       <!-- preenchido via script.js -->
     </tbody>
   </table>
-
-  <h2>📊 Tabelas de Méritos</h2>
-  <div class="merito-container">
-    <img src="merito1.png" alt="Tabela de Mérito 1">
-    <img src="merito2.png" alt="Tabela de Mérito 2">
-    <img src="merito3.png" alt="Tabela de Mérito 3">
-  </div>
 
   <script src="script.js"></script>
 </body>
