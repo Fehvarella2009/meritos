@@ -65,24 +65,20 @@ let orderMode = "ranking"; // "ranking" ou "alphabetical"
 function renderScoreboard() {
   const tbody = document.querySelector("#scoreboard tbody");
 
-  // marcar linhas atuais para fade-out
-  const existingRows = Array.from(tbody.children);
-  existingRows.forEach(row => row.classList.add('fade-out'));
+  // aplicar fade-out nas linhas atuais
+  Array.from(tbody.children).forEach(row => row.classList.add('fade-out'));
 
-  // delay para permitir animação fade-out
   setTimeout(() => {
-    tbody.innerHTML = ""; // limpa o corpo da tabela
+    tbody.innerHTML = "";
 
-    // calcular ranking fixo
+    // ranking fixo
     const rankingPlayers = [...players].sort((a, b) => (b.merits*6 + b.fractions) - (a.merits*6 + a.fractions));
     rankingPlayers.forEach((player, index) => player.rank = index + 1);
 
-    let sortedPlayers;
-    if (orderMode === "ranking") {
-      sortedPlayers = [...rankingPlayers];
-    } else {
-      sortedPlayers = [...players].sort((a, b) => a.name.localeCompare(b.name));
-    }
+    // ordenar de acordo com orderMode
+    let sortedPlayers = orderMode === "ranking"
+      ? [...rankingPlayers]
+      : [...players].sort((a, b) => a.name.localeCompare(b.name));
 
     // criar linhas com fade-in e cascata
     sortedPlayers.forEach((player, index) => {
@@ -93,7 +89,7 @@ function renderScoreboard() {
 
       const row = document.createElement("tr");
       row.classList.add('fade-in');
-      row.style.transitionDelay = `${index * 50}ms`; // efeito cascata
+      row.style.transitionDelay = `${index * 50}ms`;
       row.innerHTML = `
         <td>${player.rank}º</td>
         <td>${player.name} ${medal}</td>
@@ -103,11 +99,10 @@ function renderScoreboard() {
       tbody.appendChild(row);
     });
 
-    // atualizar texto do botão
-    document.getElementById("orderBtn").innerText = 
+    document.getElementById("orderBtn").textContent = 
       orderMode === "ranking" ? "🔀 Ordenar A-Z" : "🔀 Ordenar por Ranking";
 
-  }, 200); // tempo de fade-out
+  }, 200);
 }
 
 // alterna entre ranking e ordem alfabética
@@ -118,9 +113,11 @@ function toggleOrder() {
 
 // alterna tema claro/escuro
 function toggleTheme() {
-  document.body.classList.toggle("dark");
+  const body = document.body;
+  body.classList.toggle("dark");
+
   const btn = document.getElementById("themeBtn");
-  btn.innerText = document.body.classList.contains("dark") 
+  btn.textContent = body.classList.contains("dark") 
     ? "☀️ Modo Claro" 
     : "🌙 Modo Escuro";
 }
