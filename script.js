@@ -42,7 +42,7 @@ const players = [
   { name: "MacroX", points: 5 },
   { name: "Mika (julya)", points: 2 },
   { name: "Mika (let)", points: 2.3 },
-  { name: "MikeBoom", points: 0 },
+  { name: "MikeBoom", points: 2 },
   { name: "OMaven", points: 8 },
   { name: "Pedro Legend", points: 10 },
   { name: "Pedro", points: 2.3 },
