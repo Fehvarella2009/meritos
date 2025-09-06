@@ -69,16 +69,12 @@ function renderScoreboard() {
   const rankingPlayers = [...players].sort((a,b) => (b.merits*6+b.fractions) - (a.merits*6+a.fractions));
   rankingPlayers.forEach((p,i)=>p.rank=i+1);
 
-  const sortedPlayers = orderMode==='ranking'
-    ? [...rankingPlayers]
-    : [...players].sort((a,b)=>a.name.localeCompare(b.name));
+  const totalScore = player.merits*6 + player.fractions;
 
-  sortedPlayers.forEach((player,index)=>{
-    let medal = '';
-    if(player.rank===1) medal='🥇';
-    else if(player.rank===2) medal='🥈';
-    else if(player.rank===3) medal='🥉';
-
+let medal = '';
+if(totalScore === rankingPlayers[0].merits*6 + rankingPlayers[0].fractions) medal = "🥇";
+else if(totalScore === rankingPlayers[1]?.merits*6 + rankingPlayers[1]?.fractions) medal = "🥈";
+else if(totalScore === rankingPlayers[2]?.merits*6 + rankingPlayers[2]?.fractions) medal = "🥉";
     const row = document.createElement('tr');
     row.innerHTML = `
       <td>${player.rank}º</td>
