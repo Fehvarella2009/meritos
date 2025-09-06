@@ -66,23 +66,32 @@ function renderScoreboard() {
   const tbody = document.querySelector("#scoreboard tbody");
   tbody.innerHTML = "";
 
+  // Ordena por pontos (merits*6 + fractions)
   const rankingPlayers = [...players].sort((a,b) => (b.merits*6+b.fractions) - (a.merits*6+a.fractions));
   rankingPlayers.forEach((p,i)=>p.rank=i+1);
 
+  // Pontuação dos três primeiros para medalhas
+  const firstScore = rankingPlayers[0].merits*6 + rankingPlayers[0].fractions;
+  const secondScore = rankingPlayers[1] ? rankingPlayers[1].merits*6 + rankingPlayers[1].fractions : null;
+  const thirdScore = rankingPlayers[2] ? rankingPlayers[2].merits*6 + rankingPlayers[2].fractions : null;
+
+  // Ordenação final (por ranking ou alfabética)
   const sortedPlayers = orderMode==='ranking'
     ? [...rankingPlayers]
     : [...players].sort((a,b)=>a.name.localeCompare(b.name));
 
   sortedPlayers.forEach((player,index)=>{
+    // Atribui medalha considerando empates
+    const playerScore = player.merits*6 + player.fractions;
     let medal = '';
-    if(player.rank===1) medal='🥇';
-    else if(player.rank===2) medal='🥈';
-    else if(player.rank===3) medal='🥉';
+    if(playerScore === firstScore) medal = '🥇';
+    else if(playerScore === secondScore) medal = '🥈';
+    else if(playerScore === thirdScore) medal = '🥉';
 
     const row = document.createElement('tr');
     row.innerHTML = `
       <td>${player.rank}º</td>
-      <td class="${player.rank===1?'gold':player.rank===2?'silver':player.rank===3?'bronze':''}">
+      <td class="${playerScore === firstScore ? 'gold' : playerScore === secondScore ? 'silver' : playerScore === thirdScore ? 'bronze' : ''}">
         ${player.name} ${medal}
       </td>
       <td>${player.merits}</td>
@@ -94,6 +103,7 @@ function renderScoreboard() {
     setTimeout(()=>row.classList.add('visible'), index*50);
   });
 
+  // Atualiza texto do botão de ordenação
   document.getElementById("orderBtn").textContent = orderMode==='ranking'?'🔀 Ordenar A-Z':'🔀 Ordenar por Ranking';
 }
 
