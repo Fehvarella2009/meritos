@@ -1,121 +1,134 @@
-// Lista de jogadores do Real Value
+// Lista de jogadores com méritos e frações
 const players = [
-  { name: "AnnaVedder", points: 7 },
-  { name: "Arctibax", points: 8 },
-  { name: "Arthur Gamer", points: 8 },
-  { name: "Arthur", points: 2 },
-  { name: "Askyzz", points: 13.3 },
-  { name: "Bernardo 11", points: 3 },
-  { name: "Boltzin", points: 0 },
-  { name: "Borges", points: 7 },
-  { name: "CoragemTheDog", points: 5 },
-  { name: "Dark Jeff", points: 3 },
-  { name: "Deus Shelby", points: 13.3 },
-  { name: "Dex", points: 2 },
-  { name: "Digopom", points: 2 },
-  { name: "Dragon", points: 5 },
-  { name: "Eberton", points: 5 },
-  { name: "Easy", points: 11.3 },
-  { name: "Fast", points: 20 },
-  { name: "FgzSbau", points: 1 },
-  { name: "Firefox", points: 4.3 },
-  { name: "Frederico", points: 2.3 },
-  { name: "FrostSnow", points: 13.3 },
-  { name: "GeNiUs", points: 22 },
-  { name: "Gilmarcio", points: 11.3 },
-  { name: "Huya", points: 3 },
-  { name: "Icefox", points: 10 },
-  { name: "Infinity", points: 13.3 },
-  { name: "Jabu", points: 2.3 },
-  { name: "Jonny", points: 4.3 },
-  { name: "Juniòór", points: 8 },
-  { name: "Ka.y", points: 1 },
-  { name: "K4lav3ra", points: 8 },
-  { name: "Kevin☆", points: 3 },
-  { name: "Leonardo", points: 11.3 },
-  { name: "Levi", points: 8 },
-  { name: "Letty lettuce", points: 1 },
-  { name: "Lilyuzumi", points: 11.3 },
-  { name: "Lipexz", points: 2 },
-  { name: "LéoMatsury", points: 2.3 },
-  { name: "Luxuria", points: 2.3 },
-  { name: "MacroX", points: 5 },
-  { name: "Mika (julya)", points: 2 },
-  { name: "Mika (let)", points: 2.3 },
-  { name: "MikeBoom", points: 2 },
-  { name: "OMaven", points: 8 },
-  { name: "Pedro Legend", points: 10 },
-  { name: "Pedro", points: 2.3 },
-  { name: "Rwanda!!", points: 0 },
-  { name: "Ryco", points: 5 },
-  { name: "Sarvitar", points: 3 },
-  { name: "Sníp3r", points: 0 },
-  { name: "Spomie", points: 0 },
-  { name: "Sprout", points: 2.3 },
-  { name: "Sr. White :)", points: 0 },
-  { name: "Thxr<3", points: 2.3 },
-  { name: "Tiago70", points: 2.3 },
-  { name: "Volpirs", points: 8 },
-  { name: "Wolf", points: 0 }
+  { name: "AnnaVedder", merits: 7, fractions: 0 },
+  { name: "Arctibax", merits: 8, fractions: 0 },
+  { name: "Arthur Gamer", merits: 8, fractions: 0 },
+  { name: "Arthur", merits: 2, fractions: 0 },
+  { name: "Askyzz", merits: 13, fractions: 2 },
+  { name: "Deus Shelby", merits: 13, fractions: 2 },
+  { name: "Infinity", merits: 13, fractions: 2 },
+  { name: "FrostSnow", merits: 13, fractions: 2 },
+  { name: "GeNiUs", merits: 22, fractions: 0 },
+  { name: "Easy", merits: 11, fractions: 2 },
+  { name: "Gilmarcio", merits: 11, fractions: 2 },
+  { name: "Leonardo", merits: 11, fractions: 2 },
+  { name: "Lilyuzumi", merits: 11, fractions: 2 },
+  { name: "Ygor BB", merits: 15, fractions: 0 },
+  { name: "Fast", merits: 20, fractions: 0 },
+  { name: "Icefox", merits: 10, fractions: 0 },
+  { name: "Pedro Legend", merits: 10, fractions: 0 },
+  { name: "LettyLetuce", merits: 1, fractions: 0 },
+  { name: "CoragemTheDog", merits: 5, fractions: 0 },
+  { name: "MacroX", merits: 5, fractions: 0 },
+  { name: "Ryco", merits: 5, fractions: 0 },
+  { name: "Dragon", merits: 5, fractions: 0 },
+  { name: "Eberton", merits: 5, fractions: 0 },
+  { name: "Jonny", merits: 4, fractions: 2 },
+  { name: "Firefox", merits: 4, fractions: 2 },
+  { name: "Autobot", merits: 9, fractions: 0 },
+  { name: "Sarvitar", merits: 3, fractions: 0 },
+  { name: "Dark Jeff", merits: 3, fractions: 0 },
+  { name: "Huya", merits: 3, fractions: 0 },
+  { name: "Kevin☆", merits: 3, fractions: 0 },
+  { name: "Volpirs", merits: 8, fractions: 0 },
+  { name: "Juniòór", merits: 8, fractions: 0 },
+  { name: "K4lav3ra", merits: 8, fractions: 0 },
+  { name: "OMaven", merits: 8, fractions: 0 },
+  { name: "Dex", merits: 2, fractions: 0 },
+  { name: "Lipexz", merits: 2, fractions: 0 },
+  { name: "Mika (julya)", merits: 2, fractions: 0 },
+  { name: "Frederico", merits: 2, fractions: 2 },
+  { name: "Jabu", merits: 2, fractions: 2 },
+  { name: "LéoMatsury", merits: 2, fractions: 2 },
+  { name: "Luxuria", merits: 2, fractions: 2 },
+  { name: "Mika (let)", merits: 2, fractions: 2 },
+  { name: "Pedro", merits: 2, fractions: 2 },
+  { name: "Sprout", merits: 2, fractions: 2 },
+  { name: "Thxr<3", merits: 2, fractions: 2 },
+  { name: "Tiago70", merits: 2, fractions: 2 },
+  { name: "Boltzin", merits: 0, fractions: 0 },
+  { name: "Digopom", merits: 0, fractions: 0 },
+  { name: "MikeBoom", merits: 0, fractions: 0 },
+  { name: "Rwanda!!", merits: 0, fractions: 0 },
+  { name: "Sníp3r", merits: 0, fractions: 0 },
+  { name: "Spomie", merits: 0, fractions: 0 },
+  { name: "Sr. White :) ", merits: 0, fractions: 0 },
+  { name: "Wolf", merits: 0, fractions: 0 }
 ];
 
-let alphabeticalView = false; // alternar ordem
+let currentOrder = "ranking";
+let previousPositions = {};
 
-function renderScoreboard() {
-  const tbody = document.querySelector("#scoreboard tbody");
-  tbody.innerHTML = "";
-
-  let displayPlayers;
-  if (alphabeticalView) {
-    displayPlayers = [...players].sort((a, b) => a.name.localeCompare(b.name));
-  } else {
-    displayPlayers = [...players].sort((a, b) => b.points - a.points);
-  }
-
-  displayPlayers.forEach((player, index) => {
-    const originalPosition = players
-      .slice()
-      .sort((a, b) => b.points - a.points)
-      .findIndex(p => p.name === player.name) + 1;
-
-    const row = document.createElement("tr");
-
-    let medal = "";
-if (!alphabeticalView) {
-  // Obter as pontuações únicas em ordem decrescente
-  const topScores = [...new Set(players.map(p => p.points))].sort((a, b) => b - a);
-
-  if (player.points === topScores[0]) medal = "🥇 ";
-  else if (player.points === topScores[1]) medal = "🥈 ";
-  else if (player.points === topScores[2]) medal = "🥉 ";
+function setOrder(order) {
+  currentOrder = order;
+  renderTable();
 }
 
-    row.innerHTML = `
-      <td>${originalPosition}º</td>
-      <td>${medal}${player.name}</td>
-      <td>${player.points}</td>
-    `;
-    tbody.appendChild(row);
+function renderTable() {
+  const tableBody = document.querySelector("#scoreTable tbody");
+  tableBody.innerHTML = "";
+
+  let sortedPlayers = [...players];
+
+  if (currentOrder === "ranking") {
+    sortedPlayers.sort((a, b) =>
+      (b.merits + b.fractions / 6) - (a.merits + a.fractions / 6)
+    );
+  } else {
+    sortedPlayers.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  // top 3 (considerando empates)
+  let topScores = [...new Set(sortedPlayers.map(p => p.merits + p.fractions / 6))]
+                  .sort((a, b) => b - a)
+                  .slice(0, 3);
+
+  sortedPlayers.forEach((player, index) => {
+    const row = document.createElement("tr");
+
+    // posição / medalha
+    const posCell = document.createElement("td");
+    if (currentOrder === "ranking" && topScores.includes(player.merits + player.fractions / 6)) {
+      const medal = document.createElement("span");
+      if (topScores.indexOf(player.merits + player.fractions / 6) === 0) medal.textContent = "🥇";
+      if (topScores.indexOf(player.merits + player.fractions / 6) === 1) medal.textContent = "🥈";
+      if (topScores.indexOf(player.merits + player.fractions / 6) === 2) medal.textContent = "🥉";
+      posCell.appendChild(medal);
+    } else {
+      posCell.textContent = currentOrder === "alpha" ? "-" : index + 1;
+    }
+    row.appendChild(posCell);
+
+    // nome
+    const nameCell = document.createElement("td");
+    nameCell.textContent = player.name;
+    row.appendChild(nameCell);
+
+    // méritos
+    const meritsCell = document.createElement("td");
+    meritsCell.textContent = player.merits;
+    row.appendChild(meritsCell);
+
+    // frações
+    const fracCell = document.createElement("td");
+    fracCell.textContent = player.fractions;
+    row.appendChild(fracCell);
+
+    // animação se posição mudou
+    if (currentOrder === "ranking") {
+      const previousIndex = previousPositions[player.name];
+      if (previousIndex !== undefined && previousIndex !== index) {
+        if (previousIndex > index) {
+          row.classList.add("highlight-up");
+        } else {
+          row.classList.add("highlight-down");
+        }
+      }
+      previousPositions[player.name] = index;
+    }
+
+    tableBody.appendChild(row);
   });
 }
 
-// Botão para alternar ordenação
-document.getElementById("toggleOrder").addEventListener("click", () => {
-  alphabeticalView = !alphabeticalView;
-  document.getElementById("toggleOrder").textContent = alphabeticalView
-    ? "Voltar à ordem por pontos"
-    : "Ordenar alfabeticamente";
-  renderScoreboard();
-});
-
-// Botão para alternar tema
-document.getElementById("toggleTheme").addEventListener("click", () => {
-  document.body.classList.toggle("light-mode");
-  document.getElementById("toggleTheme").textContent =
-    document.body.classList.contains("light-mode")
-      ? "🌑 Mudar tema"
-      : "🌙 Mudar tema";
-});
-
-// Renderiza ao carregar
-renderScoreboard();
+renderTable();
