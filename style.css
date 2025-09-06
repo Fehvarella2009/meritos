@@ -4,7 +4,7 @@ body {
   color: #333;
   text-align: center;
   margin: 0;
-  transition: background 0.3s, color 0.3s;
+  transition: background 0.4s, color 0.4s;
 }
 
 header {
@@ -39,11 +39,12 @@ button {
   cursor: pointer;
   background: gold;
   font-weight: bold;
-  transition: transform 0.2s;
+  transition: transform 0.2s, background 0.3s;
 }
 
 button:hover {
   transform: scale(1.1);
+  background: orange;
 }
 
 table {
@@ -51,6 +52,7 @@ table {
   border-collapse: collapse;
   width: 90%;
   max-width: 800px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 th, td {
@@ -76,17 +78,51 @@ tr {
 .silver { color: silver; font-weight: bold; }
 .bronze { color: #cd7f32; font-weight: bold; }
 
+/* imagens das tabelas */
+.merito-container {
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.merito-container img {
+  width: 250px;
+  border: 3px solid gold;
+  border-radius: 10px;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.merito-container img:hover {
+  transform: scale(1.05);
+  border-color: orange;
+}
+
+/* rodapé */
+footer {
+  margin-top: 30px;
+  padding: 15px;
+  background: #222;
+  color: #fff;
+}
+
 /* modo escuro */
 body.dark {
-  background: #121212;
+  background: #0d1b2a; /* azul noite */
   color: #f1f1f1;
 }
 
 body.dark table {
   border-color: #555;
+  box-shadow: 0 4px 8px rgba(255,255,255,0.1);
 }
 
 body.dark th, 
 body.dark td {
   border: 1px solid #555;
+}
+
+body.dark footer {
+  background: #162d46;
 }
