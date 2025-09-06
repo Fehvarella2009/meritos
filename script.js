@@ -12,7 +12,7 @@ const players = [
   { name: "Dark Jeff", points: 3 },
   { name: "Deus Shelby", points: 13.3 },
   { name: "Dex", points: 2 },
-  { name: "Digopom", points: 0 },
+  { name: "Digopom", points: 2 },
   { name: "Dragon", points: 5 },
   { name: "Eberton", points: 5 },
   { name: "Easy", points: 11.3 },
