@@ -104,6 +104,10 @@ function renderScoreboard() {
     `;
     tbody.appendChild(row);
   });
+
+  // atualizar texto do botão
+  document.getElementById("orderBtn").innerText = 
+    orderMode === "ranking" ? "🔀 Ordenar A-Z" : "🔀 Ordenar por Ranking";
 }
 
 function toggleOrder() {
@@ -113,6 +117,10 @@ function toggleOrder() {
 
 function toggleTheme() {
   document.body.classList.toggle("dark");
+  const btn = document.getElementById("themeBtn");
+  btn.innerText = document.body.classList.contains("dark") 
+    ? "☀️ Modo Claro" 
+    : "🌙 Modo Escuro";
 }
 
 renderScoreboard();
