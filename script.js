@@ -59,62 +59,64 @@ const players = [
   { name: "Wolf", merits: 0, fractions: 0 }
 ];
 
-let orderMode = "ranking"; // ranking ou alfabetico
+let orderMode = "ranking"; // "ranking" ou "alphabetical"
 
+// Função para renderizar a tabela
 function renderScoreboard() {
   const tbody = document.querySelector("#scoreboard tbody");
-  tbody.innerHTML = "";
 
-  let sortedPlayers = [...players];
+  // marcar linhas atuais para fade-out
+  const existingRows = Array.from(tbody.children);
+  existingRows.forEach(row => row.classList.add('fade-out'));
 
-  if (orderMode === "ranking") {
-    sortedPlayers.sort((a, b) => (b.merits*6 + b.fractions) - (a.merits*6 + a.fractions));
-  } else {
-    sortedPlayers.sort((a, b) => a.name.localeCompare(b.name));
-  }
+  // delay para permitir animação fade-out
+  setTimeout(() => {
+    tbody.innerHTML = ""; // limpa o corpo da tabela
 
-  let lastScore = null;
-  let position = 0;
+    // calcular ranking fixo
+    const rankingPlayers = [...players].sort((a, b) => (b.merits*6 + b.fractions) - (a.merits*6 + a.fractions));
+    rankingPlayers.forEach((player, index) => player.rank = index + 1);
 
-  sortedPlayers.forEach((player, index) => {
-    const totalFractions = player.merits*6 + player.fractions;
-
+    let sortedPlayers;
     if (orderMode === "ranking") {
-      if (totalFractions !== lastScore) {
-        position = index + 1;
-        lastScore = totalFractions;
-      }
+      sortedPlayers = [...rankingPlayers];
     } else {
-      position = "-";
+      sortedPlayers = [...players].sort((a, b) => a.name.localeCompare(b.name));
     }
 
-    let medal = "";
-    if (orderMode === "ranking") {
-      if (position === 1) medal = "🥇";
-      else if (position === 2) medal = "🥈";
-      else if (position === 3) medal = "🥉";
-    }
+    // criar linhas com fade-in e cascata
+    sortedPlayers.forEach((player, index) => {
+      let medal = "";
+      if (player.rank === 1) medal = "🥇";
+      else if (player.rank === 2) medal = "🥈";
+      else if (player.rank === 3) medal = "🥉";
 
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td>${orderMode === "ranking" ? position + "º" : "-"}</td>
-      <td>${player.name} ${medal}</td>
-      <td>${player.merits}</td>
-      <td>${player.fractions}</td>
-    `;
-    tbody.appendChild(row);
-  });
+      const row = document.createElement("tr");
+      row.classList.add('fade-in');
+      row.style.transitionDelay = `${index * 50}ms`; // efeito cascata
+      row.innerHTML = `
+        <td>${player.rank}º</td>
+        <td>${player.name} ${medal}</td>
+        <td>${player.merits}</td>
+        <td>${player.fractions}</td>
+      `;
+      tbody.appendChild(row);
+    });
 
-  // atualizar texto do botão
-  document.getElementById("orderBtn").innerText = 
-    orderMode === "ranking" ? "🔀 Ordenar A-Z" : "🔀 Ordenar por Ranking";
+    // atualizar texto do botão
+    document.getElementById("orderBtn").innerText = 
+      orderMode === "ranking" ? "🔀 Ordenar A-Z" : "🔀 Ordenar por Ranking";
+
+  }, 200); // tempo de fade-out
 }
 
+// alterna entre ranking e ordem alfabética
 function toggleOrder() {
   orderMode = orderMode === "ranking" ? "alphabetical" : "ranking";
   renderScoreboard();
 }
 
+// alterna tema claro/escuro
 function toggleTheme() {
   document.body.classList.toggle("dark");
   const btn = document.getElementById("themeBtn");
@@ -123,4 +125,5 @@ function toggleTheme() {
     : "🌙 Modo Escuro";
 }
 
+// render inicial
 renderScoreboard();
