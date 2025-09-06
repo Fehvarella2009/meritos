@@ -99,11 +99,19 @@ document.getElementById("orderBtn").addEventListener('click',()=>{
   renderScoreboard();
 });
 
-// alternar tema
-document.getElementById("themeBtn").addEventListener('click',()=>{
-  document.body.classList.toggle('dark');
-  document.getElementById("themeBtn").textContent = document.body.classList.contains('dark')?'☀️ Modo Claro':'🌙 Modo Escuro';
-});
+// seleciona botão
+const themeBtn = document.getElementById("themeBtn");
 
-// inicial
-renderScoreboard();
+// inicializa texto correto do botão
+themeBtn.textContent = document.body.classList.contains('dark') ? "☀️ Modo Claro" : "🌙 Modo Escuro";
+
+// evento de clique
+themeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark"); // alterna classe dark
+  // atualiza texto do botão
+  if (document.body.classList.contains("dark")) {
+    themeBtn.textContent = "☀️ Modo Claro"; // se estiver escuro, mostra opção de claro
+  } else {
+    themeBtn.textContent = "🌙 Modo Escuro"; // se estiver claro, mostra opção de escuro
+  }
+});
