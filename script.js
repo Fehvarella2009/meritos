@@ -69,12 +69,16 @@ function renderScoreboard() {
   const rankingPlayers = [...players].sort((a,b) => (b.merits*6+b.fractions) - (a.merits*6+a.fractions));
   rankingPlayers.forEach((p,i)=>p.rank=i+1);
 
-  const totalScore = player.merits*6 + player.fractions;
+  const sortedPlayers = orderMode==='ranking'
+    ? [...rankingPlayers]
+    : [...players].sort((a,b)=>a.name.localeCompare(b.name));
 
-let medal = '';
-if(totalScore === rankingPlayers[0].merits*6 + rankingPlayers[0].fractions) medal = "🥇";
-else if(totalScore === rankingPlayers[1]?.merits*6 + rankingPlayers[1]?.fractions) medal = "🥈";
-else if(totalScore === rankingPlayers[2]?.merits*6 + rankingPlayers[2]?.fractions) medal = "🥉";
+  sortedPlayers.forEach((player,index)=>{
+    let medal = '';
+    if(player.rank===1) medal='🥇';
+    else if(player.rank===2) medal='🥈';
+    else if(player.rank===3) medal='🥉';
+
     const row = document.createElement('tr');
     row.innerHTML = `
       <td>${player.rank}º</td>
@@ -99,19 +103,11 @@ document.getElementById("orderBtn").addEventListener('click',()=>{
   renderScoreboard();
 });
 
-// seleciona botão
-const themeBtn = document.getElementById("themeBtn");
-
-// inicializa texto correto do botão
-themeBtn.textContent = document.body.classList.contains('dark') ? "☀️ Modo Claro" : "🌙 Modo Escuro";
-
-// evento de clique
-themeBtn.addEventListener("click", () => {
-  document.body.classList.toggle("dark"); // alterna classe dark
-  // atualiza texto do botão
-  if (document.body.classList.contains("dark")) {
-    themeBtn.textContent = "☀️ Modo Claro"; // se estiver escuro, mostra opção de claro
-  } else {
-    themeBtn.textContent = "🌙 Modo Escuro"; // se estiver claro, mostra opção de escuro
-  }
+// alternar tema
+document.getElementById("themeBtn").addEventListener('click',()=>{
+  document.body.classList.toggle('dark');
+  document.getElementById("themeBtn").textContent = document.body.classList.contains('dark')?'☀️ Modo Claro':'🌙 Modo Escuro';
 });
+
+// inicial
+renderScoreboard();
