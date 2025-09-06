@@ -52,14 +52,17 @@ button:hover {
 table {
   margin: 20px auto;
   border-collapse: collapse;
-  width: 90%;
+  width: 100%;
   max-width: 800px;
+  display: block;
+  overflow-x: auto; /* scroll horizontal se necessário */
   box-shadow: 0 4px 8px rgba(255,255,255,0.05);
 }
 
 th, td {
   padding: 10px 15px;
   text-align: center;
+  min-width: 80px;
   border-bottom: none;
   border-right: none;
 }
@@ -86,19 +89,17 @@ tbody tr:hover {
   background-color: #23314a;
 }
 
-/* animação das linhas da tabela */
-tbody tr {
-  transition: background-color 0.5s, transform 0.4s, opacity 0.4s;
-}
-
+/* animação fade-in e fade-out */
 tbody tr.fade-out {
   opacity: 0;
   transform: translateY(10px);
+  transition: opacity 0.2s, transform 0.2s;
 }
 
 tbody tr.fade-in {
   opacity: 1;
   transform: translateY(0);
+  transition: opacity 0.4s, transform 0.4s;
 }
 
 /* medalhas com brilho animado contínuo */
