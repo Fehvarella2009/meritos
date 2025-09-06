@@ -1,7 +1,7 @@
 /* corpo e cores */
 body {
   font-family: Arial, sans-serif;
-  background: #121822; /* modo escuro inicial */
+  background: #121822; /* fundo padrão escuro */
   color: #e0e0e0;
   text-align: center;
   margin: 0;
@@ -136,3 +136,44 @@ footer {
   background: #0d1a2a;
   color: #f1f1f1;
 }
+
+/* =========================== */
+/* MODO ESCURO / CLARO TOGGLE */
+/* =========================== */
+
+/* Modo escuro */
+body.dark {
+  background-color: #121822;
+  color: #e0e0e0;
+}
+
+body.dark table,
+body.dark th,
+body.dark td {
+  background-color: #18202c;
+  color: #e0e0e0;
+  border-color: #444444;
+}
+
+/* Modo claro */
+body:not(.dark) {
+  background-color: #f5f5f5;
+  color: #111111;
+}
+
+body:not(.dark) table,
+body:not(.dark) th,
+body:not(.dark) td {
+  background-color: #ffffff;
+  color: #111111;
+  border-color: #cccccc;
+}
+
+/* Medalhas em ambos os modos */
+body.dark .gold, body:not(.dark) .gold { color: #ffd700; }
+body.dark .silver, body:not(.dark) .silver { color: #c0c0c0; }
+body.dark .bronze, body:not(.dark) .bronze { color: #cd7f32; }
+
+/* Rodapé em ambos os modos */
+body.dark footer { background-color: #0d1a2a; color: #f1f1f1; }
+body:not(.dark) footer { background-color: #e0e0e0; color: #111111; }
