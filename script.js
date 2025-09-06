@@ -61,66 +61,53 @@ const players = [
 
 let orderMode = "ranking"; // "ranking" ou "alphabetical"
 
-// Função para renderizar a tabela
+// render tabela
 function renderScoreboard() {
   const tbody = document.querySelector("#scoreboard tbody");
+  tbody.innerHTML = "";
 
-  // aplicar fade-out nas linhas atuais
-  Array.from(tbody.children).forEach(row => row.classList.add('fade-out'));
+  const rankingPlayers = [...players].sort((a,b) => (b.merits*6+b.fractions) - (a.merits*6+a.fractions));
+  rankingPlayers.forEach((p,i)=>p.rank=i+1);
 
-  setTimeout(() => {
-    tbody.innerHTML = "";
+  const sortedPlayers = orderMode==='ranking'
+    ? [...rankingPlayers]
+    : [...players].sort((a,b)=>a.name.localeCompare(b.name));
 
-    // ranking fixo
-    const rankingPlayers = [...players].sort((a, b) => (b.merits*6 + b.fractions) - (a.merits*6 + a.fractions));
-    rankingPlayers.forEach((player, index) => player.rank = index + 1);
+  sortedPlayers.forEach((player,index)=>{
+    let medal = '';
+    if(player.rank===1) medal='🥇';
+    else if(player.rank===2) medal='🥈';
+    else if(player.rank===3) medal='🥉';
 
-    // ordenar de acordo com orderMode
-    let sortedPlayers = orderMode === "ranking"
-      ? [...rankingPlayers]
-      : [...players].sort((a, b) => a.name.localeCompare(b.name));
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${player.rank}º</td>
+      <td class="${player.rank===1?'gold':player.rank===2?'silver':player.rank===3?'bronze':''}">
+        ${player.name} ${medal}
+      </td>
+      <td>${player.merits}</td>
+      <td>${player.fractions}</td>
+    `;
+    tbody.appendChild(row);
 
-    // criar linhas com fade-in e cascata
-    sortedPlayers.forEach((player, index) => {
-      let medal = "";
-      if (player.rank === 1) medal = "🥇";
-      else if (player.rank === 2) medal = "🥈";
-      else if (player.rank === 3) medal = "🥉";
+    // animação suave em cascata
+    setTimeout(()=>row.classList.add('visible'), index*50);
+  });
 
-      const row = document.createElement("tr");
-      row.classList.add('fade-in');
-      row.style.transitionDelay = `${index * 50}ms`;
-      row.innerHTML = `
-        <td>${player.rank}º</td>
-        <td>${player.name} ${medal}</td>
-        <td>${player.merits}</td>
-        <td>${player.fractions}</td>
-      `;
-      tbody.appendChild(row);
-    });
-
-    document.getElementById("orderBtn").textContent = 
-      orderMode === "ranking" ? "🔀 Ordenar A-Z" : "🔀 Ordenar por Ranking";
-
-  }, 200);
+  document.getElementById("orderBtn").textContent = orderMode==='ranking'?'🔀 Ordenar A-Z':'🔀 Ordenar por Ranking';
 }
 
-// alterna entre ranking e ordem alfabética
-function toggleOrder() {
-  orderMode = orderMode === "ranking" ? "alphabetical" : "ranking";
+// alternar ordenação
+document.getElementById("orderBtn").addEventListener('click',()=>{
+  orderMode = orderMode==='ranking'?'alphabetical':'ranking';
   renderScoreboard();
-}
+});
 
-// alterna tema claro/escuro
-function toggleTheme() {
-  const body = document.body;
-  body.classList.toggle("dark");
+// alternar tema
+document.getElementById("themeBtn").addEventListener('click',()=>{
+  document.body.classList.toggle('dark');
+  document.getElementById("themeBtn").textContent = document.body.classList.contains('dark')?'☀️ Modo Claro':'🌙 Modo Escuro';
+});
 
-  const btn = document.getElementById("themeBtn");
-  btn.textContent = body.classList.contains("dark") 
-    ? "☀️ Modo Claro" 
-    : "🌙 Modo Escuro";
-}
-
-// render inicial
+// inicial
 renderScoreboard();
