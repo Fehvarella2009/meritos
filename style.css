@@ -1,7 +1,8 @@
+/* corpo e cores */
 body {
   font-family: Arial, sans-serif;
-  background: #f4f4f9;
-  color: #333;
+  background: #121822; /* modo escuro inicial */
+  color: #e0e0e0;
   text-align: center;
   margin: 0;
   transition: background 0.4s, color 0.4s;
@@ -47,36 +48,89 @@ button:hover {
   background: orange;
 }
 
+/* tabela suave, sem linhas verticais */
 table {
   margin: 20px auto;
   border-collapse: collapse;
   width: 90%;
   max-width: 800px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(255,255,255,0.05);
 }
 
 th, td {
-  border: 1px solid #ccc;
-  padding: 8px;
+  padding: 10px 15px;
+  text-align: center;
+  border-bottom: none;
+  border-right: none;
 }
 
-tr {
+/* cores alternadas neutras */
+tbody tr:nth-child(even) {
+  background-color: #1a2433;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #18202c;
+}
+
+th {
+  background-color: #1f2a3b;
+  color: #e0e0e0;
+  font-weight: bold;
+  border-bottom: 2px solid #444;
+}
+
+/* hover leve nas linhas */
+tbody tr:hover {
+  transform: scale(1.02);
+  background-color: #23314a;
+}
+
+/* animação das linhas da tabela */
+tbody tr {
+  transition: background-color 0.5s, transform 0.4s, opacity 0.4s;
+}
+
+tbody tr.fade-out {
   opacity: 0;
   transform: translateY(10px);
-  animation: fadeIn 0.6s forwards;
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+tbody tr.fade-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* medalhas */
-.gold { color: gold; font-weight: bold; }
-.silver { color: silver; font-weight: bold; }
-.bronze { color: #cd7f32; font-weight: bold; }
+/* medalhas com brilho animado contínuo */
+@keyframes goldGlow {
+  0%, 100% { text-shadow: 0 0 5px #fff, 0 0 10px #fff; }
+  50% { text-shadow: 0 0 15px #ffd700, 0 0 25px #ffd700; }
+}
+.gold {
+  color: #ffd700;
+  font-weight: bold;
+  animation: goldGlow 2s infinite;
+}
+
+@keyframes silverGlow {
+  0%, 100% { text-shadow: 0 0 3px #fff, 0 0 6px #fff; }
+  50% { text-shadow: 0 0 10px #c0c0c0, 0 0 15px #c0c0c0; }
+}
+.silver {
+  color: #c0c0c0;
+  font-weight: bold;
+  animation: silverGlow 2s infinite;
+}
+
+@keyframes bronzeGlow {
+  0%, 100% { text-shadow: 0 0 3px #fff, 0 0 6px #fff; }
+  50% { text-shadow: 0 0 10px #cd7f32, 0 0 15px #cd7f32; }
+}
+.bronze {
+  color: #cd7f32;
+  font-weight: bold;
+  animation: bronzeGlow 2s infinite;
+}
 
 /* imagens das tabelas */
 .merito-container {
@@ -103,26 +157,6 @@ tr {
 footer {
   margin-top: 30px;
   padding: 15px;
-  background: #222;
-  color: #fff;
-}
-
-/* modo escuro */
-body.dark {
-  background: #0d1b2a; /* azul noite */
+  background: #0d1a2a;
   color: #f1f1f1;
-}
-
-body.dark table {
-  border-color: #555;
-  box-shadow: 0 4px 8px rgba(255,255,255,0.1);
-}
-
-body.dark th, 
-body.dark td {
-  border: 1px solid #555;
-}
-
-body.dark footer {
-  background: #162d46;
 }
