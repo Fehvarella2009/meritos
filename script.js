@@ -122,21 +122,22 @@ document.getElementById("themeBtn").addEventListener('click',()=>{
 // inicial
 renderScoreboard();
 
-// TROCA DAS IMAGENS COM FADE E TEXTO
-document.querySelectorAll('.merito-container img').forEach((img, index) => {
+// TROCA DAS IMAGENS COM FADE E TEXTO DINÂMICO
+document.querySelectorAll('.merito-wrapper img').forEach((img, index) => {
   const originalSrc = `merito${index+1}.png`;   // arte completa
   const croppedSrc  = `coprada${index+1}.png`;  // só tabela
 
   // inicia com a imagem completa
   img.src = originalSrc;
 
-  // adiciona texto abaixo da imagem
-  const caption = document.createElement('div');
-  caption.textContent = 'Clique para visualizar a tabela maior';
-  caption.style.fontSize = '0.8em';
-  caption.style.textAlign = 'center';
-  caption.style.marginTop = '5px';
-  img.insertAdjacentElement('afterend', caption);
+  // adiciona legenda se não existir
+  let caption = img.nextElementSibling;
+  if(!caption || !caption.classList.contains('caption')) {
+    caption = document.createElement('div');
+    caption.classList.add('caption');
+    caption.textContent = 'Clique para visualizar a tabela maior';
+    img.insertAdjacentElement('afterend', caption);
+  }
 
   // clique para alternar com fade
   img.addEventListener('click', () => {
@@ -144,7 +145,13 @@ document.querySelectorAll('.merito-container img').forEach((img, index) => {
     img.style.opacity = 0;
 
     setTimeout(() => {
-      img.src = (img.src.includes(originalSrc)) ? croppedSrc : originalSrc;
+      if(img.src.includes(originalSrc)) {
+        img.src = croppedSrc;
+        caption.textContent = 'Clique para visualizar a arte';
+      } else {
+        img.src = originalSrc;
+        caption.textContent = 'Clique para visualizar a tabela maior';
+      }
       img.style.opacity = 1;
     }, 500);
   });
