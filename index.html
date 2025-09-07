@@ -1,58 +1,58 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<title>Placar Méritos</title>
+<!-- Miniaturas empilhadas verticalmente -->
+<div class="meritos-container">
+  <div class="merito-item">
+    <img src="merito1.png" alt="Mérito 1" class="thumbnail" data-crop="cropada1.png" data-legend="Tabela do Mérito 1">
+    <div class="legend"></div>
+  </div>
+  <div class="merito-item">
+    <img src="merito2.png" alt="Mérito 2" class="thumbnail" data-crop="cropada2.png" data-legend="Tabela do Mérito 2">
+    <div class="legend"></div>
+  </div>
+  <div class="merito-item">
+    <img src="merito3.png" alt="Mérito 3" class="thumbnail" data-crop="cropada3.png" data-legend="Tabela do Mérito 3">
+    <div class="legend"></div>
+  </div>
+</div>
+
 <style>
+  .meritos-container {
+    display: flex;
+    flex-direction: column; /* empilha verticalmente */
+    align-items: center;    /* centraliza horizontalmente */
+    gap: 20px;              /* espaço entre as imagens */
+  }
+
+  .merito-item {
+    text-align: center;
+  }
+
   .thumbnail {
     width: 150px;
     cursor: pointer;
     border: 3px solid transparent;
     transition: border 0.3s;
-    margin-right: 10px;
   }
 
   .thumbnail:hover {
     border: 3px solid gold;
   }
 
-  #preview {
-    display: block;
-    margin-top: 20px;
-    max-width: 400px;
-  }
-
-  #legend {
+  .legend {
     font-style: italic;
     margin-top: 5px;
     color: #333;
+    min-height: 1em; /* mantém espaço mesmo sem clique */
   }
 </style>
-</head>
-<body>
-
-<!-- Miniaturas -->
-<img src="merito1.png" alt="Mérito 1" class="thumbnail" data-crop="cropada1.png" data-legend="Tabela do Mérito 1">
-<img src="merito2.png" alt="Mérito 2" class="thumbnail" data-crop="cropada2.png" data-legend="Tabela do Mérito 2">
-<img src="merito3.png" alt="Mérito 3" class="thumbnail" data-crop="cropada3.png" data-legend="Tabela do Mérito 3">
-
-<!-- Área de visualização -->
-<img src="" alt="" id="preview">
-<div id="legend"></div>
 
 <script>
   const thumbnails = document.querySelectorAll('.thumbnail');
-  const preview = document.getElementById('preview');
-  const legend = document.getElementById('legend');
 
   thumbnails.forEach(thumb => {
     thumb.addEventListener('click', () => {
-      preview.src = thumb.dataset.crop;      // imagem cropada
-      preview.alt = thumb.alt;               // acessibilidade
-      legend.textContent = thumb.dataset.legend; // legendinha
+      const legendDiv = thumb.nextElementSibling; // pega o div da legenda
+      thumb.src = thumb.dataset.crop;             // troca a imagem pela cropada
+      legendDiv.textContent = thumb.dataset.legend; // mostra a legendinha
     });
   });
 </script>
-
-</body>
-</html>
