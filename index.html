@@ -1,46 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Placar de Méritos - Real Value</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Placar Méritos</title>
+<style>
+  .thumbnail {
+    width: 150px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: border 0.3s;
+    margin-right: 10px;
+  }
+
+  .thumbnail:hover {
+    border: 3px solid gold;
+  }
+
+  #preview {
+    display: block;
+    margin-top: 20px;
+    max-width: 400px;
+  }
+
+  #legend {
+    font-style: italic;
+    margin-top: 5px;
+    color: #333;
+  }
+</style>
 </head>
-<body class="dark">
-  <header>
-    <img src="Logo.png" alt="Logo Real Value" class="logo">
-    <h1>🏆 Placar de Méritos - Real Value</h1>
-    <div class="controls">
-      <button id="themeBtn">☀️ Modo Claro</button>
-      <button id="orderBtn">🔀 Ordenar A-Z</button>
-    </div>
-  </header>
+<body>
 
-  <table id="scoreboard">
-    <thead>
-      <tr>
-        <th>Posição</th>
-        <th>Jogador</th>
-        <th>Méritos</th>
-        <th>Frações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- preenchido via script.js -->
-    </tbody>
-  </table>
+<!-- Miniaturas -->
+<img src="merito1.png" alt="Mérito 1" class="thumbnail" data-crop="cropada1.png" data-legend="Tabela do Mérito 1">
+<img src="merito2.png" alt="Mérito 2" class="thumbnail" data-crop="cropada2.png" data-legend="Tabela do Mérito 2">
+<img src="merito3.png" alt="Mérito 3" class="thumbnail" data-crop="cropada3.png" data-legend="Tabela do Mérito 3">
 
-  <h2>📊 Tabelas de Méritos</h2>
-  <div class="merito-container">
-    <img src="merito1.png" alt="Tabela de Mérito 1">
-    <img src="merito2.png" alt="Tabela de Mérito 2">
-    <img src="merito3.png" alt="Tabela de Mérito 3">
-  </div>
+<!-- Área de visualização -->
+<img src="" alt="" id="preview">
+<div id="legend"></div>
 
-  <footer>
-    <p>✨ Real Value Ltda. - Sistema de Méritos &copy; 2025 ✨</p>
-  </footer>
+<script>
+  const thumbnails = document.querySelectorAll('.thumbnail');
+  const preview = document.getElementById('preview');
+  const legend = document.getElementById('legend');
 
-  <script src="script.js"></script>
+  thumbnails.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      preview.src = thumb.dataset.crop;      // imagem cropada
+      preview.alt = thumb.alt;               // acessibilidade
+      legend.textContent = thumb.dataset.legend; // legendinha
+    });
+  });
+</script>
+
 </body>
 </html>
