@@ -3,131 +3,241 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Placar de Méritos - Real Value</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Real Value - Sistema de Méritos</title>
   <style>
-    /* ======= Estilo das Tabelas de Méritos ======= */
-    .merito-container {
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+    }
+
+    header {
+      background: #222;
+      padding: 10px;
       display: flex;
-      flex-direction: column; /* empilha verticalmente */
       align-items: center;
-      gap: 20px;
+    }
+
+    header h1 {
+      flex: 1;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    /* Botão menu (hambúrguer) */
+    .menu-btn {
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Menu lateral */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background: #333;
+      transition: left 0.3s;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 15px;
+      text-decoration: none;
+      color: white;
+      border-bottom: 1px solid #444;
+    }
+
+    .sidebar a:hover {
+      background: #444;
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    /* Conteúdo das páginas */
+    .page {
+      display: none;
+      padding: 20px;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #222;
       margin-top: 20px;
     }
 
-    .merito-item {
-      text-align: center;
-    }
-
-    .merito-item img {
-      width: 300px; 
+    /* Estilo do preview de méritos */
+    .merito-container img {
+      width: 200px;
+      margin: 10px 0;
       cursor: pointer;
       border: 3px solid transparent;
-      transition: border 0.3s, opacity 0.5s; /* transição suave */
-      opacity: 1;
+      transition: border 0.3s;
+      display: block;
     }
 
-    .merito-item img:hover {
-      border: 3px solid gold; /* hover dourado */
-    }
-
-    .merito-item img.fade-out {
-      opacity: 0;
-    }
-
-    .merito-item img.fade-in {
-      opacity: 1;
+    .merito-container img:hover {
+      border: 3px solid gold;
     }
 
     .legend {
+      font-size: 14px;
       font-style: italic;
-      margin-top: 5px;
-      color: #333;
-      min-height: 1em;
+      margin-bottom: 20px;
+      color: #ccc;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      background: green;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
     }
   </style>
 </head>
-<body class="dark">
+<body>
+
   <header>
-    <img src="Logo.png" alt="Logo Real Value" class="logo">
-    <h1>🏆 Placar de Méritos - Real Value</h1>
-    <div class="controls">
-      <button id="themeBtn">☀️ Modo Claro</button>
-      <button id="orderBtn">🔀 Ordenar A-Z</button>
-    </div>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <h1>🏆 Real Value - Sistema de Méritos</h1>
   </header>
 
-  <!-- ======= Tabela de Jogadores ======= -->
-  <table id="scoreboard">
-    <thead>
-      <tr>
-        <th>Posição</th>
-        <th>Jogador</th>
-        <th>Méritos</th>
-        <th>Frações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- preenchido via script.js -->
-    </tbody>
-  </table>
+  <!-- Menu lateral -->
+  <div class="sidebar" id="sidebar">
+    <a href="#" onclick="showPage('placar')">📊 Placar de Méritos</a>
+    <a href="#" onclick="showPage('sobre')">ℹ️ Sobre o Real Value</a>
+    <a href="#" onclick="showPage('contato')">📞 Contato</a>
+  </div>
 
-  <!-- ======= Tabelas de Méritos ======= -->
-  <h2>📊 Tabelas de Méritos</h2>
-  <div class="merito-container">
-    <div class="merito-item">
-      <img src="merito1.png" alt="Tabela de Mérito 1" data-crop="cropada1.png" data-original="merito1.png">
+  <!-- Página 1: Placar -->
+  <div class="page active" id="placar">
+    <h2>📋 Placar de Méritos</h2>
+    <table border="1" width="100%" cellpadding="8">
+      <thead>
+        <tr>
+          <th>Posição</th>
+          <th>Jogador</th>
+          <th>Méritos</th>
+          <th>Frações</th>
+        </tr>
+      </thead>
+      <tbody id="scoreboard">
+        <!-- preenchido via script.js -->
+      </tbody>
+    </table>
+
+    <h2>📊 Tabelas de Méritos</h2>
+    <div class="merito-container">
+      <img src="merito1.png" data-alt="cropada1.png" class="merito-img">
       <div class="legend">Clique para visualizar a tabela maior</div>
-    </div>
-    <div class="merito-item">
-      <img src="merito2.png" alt="Tabela de Mérito 2" data-crop="cropada2.png" data-original="merito2.png">
+      <img src="merito2.png" data-alt="cropada2.png" class="merito-img">
       <div class="legend">Clique para visualizar a tabela maior</div>
-    </div>
-    <div class="merito-item">
-      <img src="merito3.png" alt="Tabela de Mérito 3" data-crop="cropada3.png" data-original="merito3.png">
+      <img src="merito3.png" data-alt="cropada3.png" class="merito-img">
       <div class="legend">Clique para visualizar a tabela maior</div>
     </div>
   </div>
 
+  <!-- Página 2: Sobre -->
+  <div class="page" id="sobre">
+    <h2>ℹ️ Sobre o Real Value</h2>
+    <p>
+      O Real Value é uma comunidade organizada dentro do conglomerado RaposaVerse, com mais de 100 membros ativos.
+      A administração é realizada por um <strong>Conselho</strong>, responsável por manter a disciplina, 
+      a transparência e o crescimento da comunidade.
+    </p>
+    <p>
+      Atualmente, existem dois clubes oficiais: <strong>Real Value Red</strong> e <strong>Real Value Yellow</strong>.  
+      Além disso, os membros contam com grupos no WhatsApp, como:
+    </p>
+    <ul>
+      <li>💬 Chat Geral</li>
+      <li>📰 Notícias e Novidades do Brawl</li>
+      <li>🏆 Campeonatos Internos</li>
+      <li>🎨 Divulgação de Arte, YouTube e Conteúdo</li>
+      <li>👑 Conselho Administrativo</li>
+    </ul>
+    <p>
+      Os <strong>Campeonatos Internos</strong> acontecem mensalmente e podem ser em modo solo, duplas ou trios.  
+      São totalmente gratuitos e oferecem premiações que variam de <em>passes de batalha, gift cards, valores em dinheiro</em>, 
+      além de Méritos e Frações de Mérito.
+    </p>
+    <p>
+      Estrutura básica dos torneios:
+      <ul>
+        <li>👑 1 Presidente</li>
+        <li>🎖️ 1 Vice-Presidente (em treinamento)</li>
+        <li>⚔️ Peritos (auxiliam na administração e resultados)</li>
+        <li>👥 Integrantes</li>
+      </ul>
+    </p>
+    <p>
+      Os torneios contam com diferentes modos de disputa, como:
+      <ul>
+        <li><strong>Modo Descanso</strong>: o campeão descansa no torneio seguinte.</li>
+        <li><strong>Coroa Laranja</strong>: divisão de elite, nível mais alto.</li>
+        <li><strong>Coroa Cinza</strong>: divisão de entrada, ideal para novos membros.</li>
+        <li><strong>Modo Panelinha</strong>: duplas/trios fixos escolhidos pelos jogadores.</li>
+        <li><strong>Modo Aleatório</strong>: equipes montadas de forma aleatória.</li>
+      </ul>
+    </p>
+    <p>
+      Essa organização garante um ambiente justo, competitivo e divertido, mantendo o Real Value como referência em qualidade e comprometimento.
+    </p>
+  </div>
+
+  <!-- Página 3: Contato -->
+  <div class="page" id="contato">
+    <h2>📞 Contato</h2>
+    <p>
+      Precisa falar com um dos administradores? Clique no botão abaixo para entrar em contato diretamente pelo WhatsApp:
+    </p>
+    <a href="SEU_LINK_DO_WHATSAPP_AQUI" target="_blank" class="contact-btn">📲 Contatar um ADM</a>
+  </div>
+
   <footer>
-    <p> Real Value Ltda. - Sistema de Méritos &copy; 2025 | Criado por Frost </p>
+    ✨ Real Value Ltda. - Sistema de Méritos &copy; 2025 ✨
   </footer>
 
-  <script src="script.js"></script> <!-- seu script original do placar -->
-
-  <!-- ======= Script das Tabelas de Méritos com legendinha dinâmica ======= -->
   <script>
-    const meritos = document.querySelectorAll('.merito-item img');
+    // Menu lateral
+    function toggleMenu() {
+      document.getElementById("sidebar").classList.toggle("active");
+    }
 
-    meritos.forEach(img => {
-      let showingCrop = false;
-      const legendDiv = img.nextElementSibling;
+    // Navegação entre páginas
+    function showPage(pageId) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(p => p.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+      document.getElementById("sidebar").classList.remove("active");
+    }
 
+    // Alternar imagens + legenda
+    document.querySelectorAll('.merito-img').forEach((img, index) => {
       img.addEventListener('click', () => {
-        // aplica fade-out
-        img.classList.add('fade-out');
-
-        setTimeout(() => {
-          if (!showingCrop) {
-            img.src = img.dataset.crop; // mostra cropada
-            legendDiv.textContent = "Clique para visualizar a arte completa";
-          } else {
-            img.src = img.dataset.original; // volta original
-            legendDiv.textContent = "Clique para visualizar a tabela maior";
-          }
-
-          // aplica fade-in
-          img.classList.remove('fade-out');
-          img.classList.add('fade-in');
-
-          setTimeout(() => {
-            img.classList.remove('fade-in');
-          }, 500);
-
-          showingCrop = !showingCrop;
-        }, 300);
+        const current = img.src;
+        img.src = current.includes('cropada') ? img.getAttribute('data-alt').replace('cropada', 'merito') : img.dataset.alt;
+        const legend = img.nextElementSibling;
+        legend.textContent = current.includes('cropada') ? "Clique para visualizar a tabela maior" : "Clique para visualizar a arte completa";
       });
     });
   </script>
+
 </body>
 </html>
