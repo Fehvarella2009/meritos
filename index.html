@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sobre o Clube - Real Value</title>
+  <title>Sobre e Contato - Real Value</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ======= Estilo da Página Sobre ======= */
+    /* ======= Página Sobre e Contato ======= */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark {
       background-color: #111;
       color: #fff;
-      transition: background 0.3s, color 0.3s;
     }
 
     body.light {
@@ -25,14 +28,11 @@
       color: #fff;
       padding: 10px;
       text-align: center;
-      position: relative;
-      box-shadow: 0 0 15px gold;
     }
 
     body.light header, body.light footer {
       background-color: #ddd;
       color: #111;
-      box-shadow: 0 0 15px #daa520;
     }
 
     header img.logo {
@@ -61,19 +61,24 @@
       margin: auto;
     }
 
-    main h2 {
+    h2 {
       color: gold;
-      margin-top: 20px;
       text-shadow: 0 0 5px gold;
+      margin-top: 20px;
     }
 
-    main p, main ul {
-      margin-bottom: 15px;
-      line-height: 1.6;
+    .section-card {
+      background-color: #222;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      border: 1px solid gold;
+      transition: background 0.3s, border-color 0.3s;
     }
 
-    main ul {
-      padding-left: 20px;
+    body.light .section-card {
+      background-color: #eee;
+      border-color: #daa520;
     }
 
     .contact-btn {
@@ -93,30 +98,11 @@
       box-shadow: 0 0 10px gold;
     }
 
-    .section-card {
-      background-color: #222;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      border: 1px solid gold;
-      transition: background 0.3s, border-color 0.3s;
-    }
-
-    body.light .section-card {
-      background-color: #eee;
-      border-color: #daa520;
-    }
-
-    /* Menu superior adicional */
-    .menu-container {
-      text-align: center;
-      margin: 10px 0;
-    }
-
-    .menu-btn {
+    /* Botão extra abaixo do logo no index */
+    .extra-btn {
       display: inline-block;
+      margin: 10px 0 20px 0;
       padding: 8px 15px;
-      margin: 0 5px;
       background-color: #444;
       color: #fff;
       border-radius: 5px;
@@ -124,18 +110,18 @@
       transition: background 0.3s, box-shadow 0.3s;
     }
 
-    .menu-btn:hover {
+    .extra-btn:hover {
       background-color: gold;
       color: #111;
       box-shadow: 0 0 10px gold;
     }
 
-    body.light .menu-btn {
+    body.light .extra-btn {
       background-color: #aaa;
       color: #111;
     }
 
-    body.light .menu-btn:hover {
+    body.light .extra-btn:hover {
       background-color: #daa520;
       color: #fff;
       box-shadow: 0 0 10px #daa520;
@@ -150,28 +136,21 @@
     <p>| Criado por Frost</p>
   </header>
 
-  <!-- Menu de navegação -->
-  <div class="menu-container">
-    <a href="index.html" class="menu-btn">Placar de Méritos</a>
-    <a href="sobre.html" class="menu-btn">Sobre e Contato</a>
-  </div>
-
   <main>
     <h2>ℹ️ Sobre o Real Value</h2>
 
     <div class="section-card">
       <p>
-        O <strong>Real Value</strong> é uma comunidade organizada e meritocrática, resultado de apuração rigorosa entre mais de 100 membros ativos.  
-        A comunidade conta com dois clubes oficiais: <strong>Real Value Red</strong> e <strong>Real Value Yellow</strong>, promovendo competitividade saudável e integração entre os membros.
+        O <strong>Real Value</strong> é uma comunidade organizada e meritocrática, resultado de apuração entre mais de 100 membros ativos.  
+        Conta com dois clubes oficiais: <strong>Red</strong> e <strong>Yellow</strong>, promovendo integração, competição saudável e valorização do mérito.
       </p>
     </div>
 
     <div class="section-card">
       <h2>👑 Administração e Conselho</h2>
       <p>
-        A gestão é conduzida pelo <strong>Conselho Administrativo</strong>, responsável por decisões estratégicas, regras e torneios internos.  
-        Estrutura: Presidente, Vice-Presidente (em treinamento), Peritos e Integrantes.  
-        Os Peritos auxiliam na administração e verificação de resultados, garantindo transparência, organização e meritocracia.
+        A gestão é conduzida pelo <strong>Conselho Administrativo</strong>, composto por Presidente, Vice-Presidente (em treinamento), Peritos e Integrantes.  
+        Os Peritos auxiliam na administração de torneios internos, registro de resultados e supervisão de participação, garantindo transparência e organização.
       </p>
     </div>
 
@@ -189,21 +168,20 @@
     <div class="section-card">
       <h2>🏆 Campeonatos Internos</h2>
       <p>
-        Os torneios internos ocorrem mensalmente, com formatos solo, duplas ou trios.  
-        A participação é opcional, mas gera <strong>Méritos</strong> e <strong>Frações de Mérito</strong>.
+        Os torneios oficiais ocorrem mensalmente, em formatos solo, duplas ou trios.  
+        Participação opcional, mas gera Méritos e Frações de Mérito.
       </p>
       <ul>
         <li>Modo Descanso: campeões descansam na próxima edição.</li>
         <li>Trono Dourado: 1ª divisão de elite.</li>
         <li>Trono Prateado: 2ª divisão de desenvolvimento.</li>
         <li>Modo Panelinha: duplas/trios fixos por amizade.</li>
-        <li>Modo Aleatório: equipes formadas aleatoriamente.</li>
+        <li>Modo Aleatório: equipes formadas aleatoriamente</li>
       </ul>
-      <p>Premiações: passes, gift cards, valores em dinheiro e Méritos acumuláveis para os RaposaVerse Awards.</p>
+      <p>Premiações incluem passes, gift cards, valores em dinheiro e Méritos acumuláveis para os RaposaVerse Awards.</p>
     </div>
 
     <a href="SEU_LINK_WHATSAPP_AQUI" class="contact-btn" target="_blank">📲 Entrar em contato com o Presidente</a>
-
   </main>
 
   <footer>
