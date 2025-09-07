@@ -5,6 +5,7 @@ const players = [
   { name: "Arthur Gamer", merits: 8, fractions: 0 },
   { name: "Arthur", merits: 2, fractions: 0 },
   { name: "Askyzz", merits: 13, fractions: 2 },
+  { name: "Atlantic", merits: 11, fractions: 2 }, // inserido
   { name: "Bernardo 11", merits: 3, fractions: 0 },
   { name: "Boltzin", merits: 0, fractions: 0 },
   { name: "Borges", merits: 7, fractions: 0 },
@@ -26,6 +27,7 @@ const players = [
   { name: "Huya", merits: 3, fractions: 0 },
   { name: "Icefox", merits: 10, fractions: 0 },
   { name: "Infinity", merits: 13, fractions: 2 },
+  { name: "Itach", merits: 0, fractions: 0 }, // inserido
   { name: "Jabu", merits: 2, fractions: 3 },
   { name: "Jonny", merits: 4, fractions: 2 },
   { name: "Juniòór", merits: 8, fractions: 0 },
@@ -46,6 +48,7 @@ const players = [
   { name: "OMaven", merits: 8, fractions: 0 },
   { name: "Pedro Legend", merits: 10, fractions: 0 },
   { name: "Pedro", merits: 2, fractions: 3 },
+  { name: "Reis", merits: 2, fractions: 3 }, // inserido
   { name: "Rwanda!!", merits: 0, fractions: 0 },
   { name: "Ryco", merits: 5, fractions: 0 },
   { name: "Sarvitar", merits: 3, fractions: 0 },
