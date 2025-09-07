@@ -27,7 +27,7 @@ const players = [
   { name: "Huya", merits: 3, fractions: 0 },
   { name: "Icefox", merits: 10, fractions: 0 },
   { name: "Infinity", merits: 13, fractions: 2 },
-  { name: "Itach", merits: 0, fractions: 0 }, // inserido
+  { name: "Itach", merits: 8, fractions: 0 }, // inserido
   { name: "Jabu", merits: 2, fractions: 3 },
   { name: "Jonny", merits: 4, fractions: 2 },
   { name: "Juniòór", merits: 8, fractions: 0 },
