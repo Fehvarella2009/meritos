@@ -25,12 +25,61 @@
     <tbody>  
       <!-- preenchido via script.js -->  
     </tbody>  
-  </table>    <h2>📊 Tabelas de Méritos</h2>  
-  <div class="merito-container">  
-    <img src="merito1.png" alt="Tabela de Mérito 1">  
-    <img src="merito2.png" alt="Tabela de Mérito 2">  
-    <img src="merito3.png" alt="Tabela de Mérito 3">  
-  </div>    <footer>  
-    <p> Real Value Ltda. - Sistema de Méritos &copy; 2025 </p>  
-  </footer>    <script src="script.js"></script>  </body>  
-</html>
+  </table>    <h2>📊 Tabelas de Méritos</h2>
+<div class="merito-container">
+  <div class="merito-item">
+    <img src="merito1.png" alt="Tabela de Mérito 1" data-crop="cropada1.png" data-legend="Tabela do Mérito 1">
+    <div class="legend"></div>
+  </div>
+  <div class="merito-item">
+    <img src="merito2.png" alt="Tabela de Mérito 2" data-crop="cropada2.png" data-legend="Tabela do Mérito 2">
+    <div class="legend"></div>
+  </div>
+  <div class="merito-item">
+    <img src="merito3.png" alt="Tabela de Mérito 3" data-crop="cropada3.png" data-legend="Tabela do Mérito 3">
+    <div class="legend"></div>
+  </div>
+</div>
+
+<style>
+.merito-container {
+  display: flex;
+  flex-direction: column; /* empilha verticalmente */
+  align-items: center;    /* centraliza as imagens */
+  gap: 20px;
+}
+
+.merito-item {
+  text-align: center;
+}
+
+.merito-item img {
+  width: 300px; /* ou a largura que você usava antes */
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: border 0.3s;
+}
+
+.merito-item img:hover {
+  border: 3px solid gold; /* mantém efeito hover */
+}
+
+.legend {
+  font-style: italic;
+  margin-top: 5px;
+  color: #333;
+  min-height: 1em; /* mantém espaço mesmo sem clique */
+}
+</style>
+
+<script>
+const meritos = document.querySelectorAll('.merito-item img');
+
+meritos.forEach(img => {
+  img.addEventListener('click', () => {
+    img.src = img.dataset.crop;            // troca para cropada
+    const legendDiv = img.nextElementSibling;
+    legendDiv.textContent = img.dataset.legend; // mostra legendinha
+  });
+});
+</script>
