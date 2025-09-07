@@ -23,12 +23,20 @@
       width: 300px; 
       cursor: pointer;
       border: 3px solid transparent;
-      transition: border 0.3s, opacity 0.4s; /* transição suave */
+      transition: border 0.3s, opacity 0.5s; /* transição suave */
       opacity: 1;
     }
 
     .merito-item img:hover {
       border: 3px solid gold; /* hover dourado */
+    }
+
+    .merito-item img.fade-out {
+      opacity: 0;
+    }
+
+    .merito-item img.fade-in {
+      opacity: 1;
     }
 
     .legend {
@@ -68,16 +76,16 @@
   <h2>📊 Tabelas de Méritos</h2>
   <div class="merito-container">
     <div class="merito-item">
-      <img src="merito1.png" alt="Tabela de Mérito 1" data-crop="cropada1.png" data-original="merito1.png" data-legend="Tabela do Mérito 1">
-      <div class="legend"></div>
+      <img src="merito1.png" alt="Tabela de Mérito 1" data-crop="cropada1.png" data-original="merito1.png">
+      <div class="legend">Clique para visualizar a tabela maior</div>
     </div>
     <div class="merito-item">
-      <img src="merito2.png" alt="Tabela de Mérito 2" data-crop="cropada2.png" data-original="merito2.png" data-legend="Tabela do Mérito 2">
-      <div class="legend"></div>
+      <img src="merito2.png" alt="Tabela de Mérito 2" data-crop="cropada2.png" data-original="merito2.png">
+      <div class="legend">Clique para visualizar a tabela maior</div>
     </div>
     <div class="merito-item">
-      <img src="merito3.png" alt="Tabela de Mérito 3" data-crop="cropada3.png" data-original="merito3.png" data-legend="Tabela do Mérito 3">
-      <div class="legend"></div>
+      <img src="merito3.png" alt="Tabela de Mérito 3" data-crop="cropada3.png" data-original="merito3.png">
+      <div class="legend">Clique para visualizar a tabela maior</div>
     </div>
   </div>
 
@@ -87,29 +95,37 @@
 
   <script src="script.js"></script> <!-- seu script original do placar -->
 
-  <!-- ======= Script das Tabelas de Méritos ======= -->
+  <!-- ======= Script das Tabelas de Méritos com legendinha dinâmica ======= -->
   <script>
     const meritos = document.querySelectorAll('.merito-item img');
 
     meritos.forEach(img => {
       let showingCrop = false;
+      const legendDiv = img.nextElementSibling;
 
       img.addEventListener('click', () => {
-        const legendDiv = img.nextElementSibling;
+        // aplica fade-out
+        img.classList.add('fade-out');
 
-        // efeito fade
-        img.style.opacity = 0;
         setTimeout(() => {
           if (!showingCrop) {
             img.src = img.dataset.crop; // mostra cropada
-            legendDiv.textContent = img.dataset.legend; // mostra legendinha
+            legendDiv.textContent = "Clique para visualizar a arte completa";
           } else {
             img.src = img.dataset.original; // volta original
-            legendDiv.textContent = ''; // esconde legendinha
+            legendDiv.textContent = "Clique para visualizar a tabela maior";
           }
-          img.style.opacity = 1;
-          showingCrop = !showingCrop; // alterna estado
-        }, 200);
+
+          // aplica fade-in
+          img.classList.remove('fade-out');
+          img.classList.add('fade-in');
+
+          setTimeout(() => {
+            img.classList.remove('fade-in');
+          }, 500);
+
+          showingCrop = !showingCrop;
+        }, 300);
       });
     });
   </script>
