@@ -1,58 +1,36 @@
-<!-- Miniaturas empilhadas verticalmente -->
-<div class="meritos-container">
-  <div class="merito-item">
-    <img src="merito1.png" alt="Mérito 1" class="thumbnail" data-crop="cropada1.png" data-legend="Tabela do Mérito 1">
-    <div class="legend"></div>
-  </div>
-  <div class="merito-item">
-    <img src="merito2.png" alt="Mérito 2" class="thumbnail" data-crop="cropada2.png" data-legend="Tabela do Mérito 2">
-    <div class="legend"></div>
-  </div>
-  <div class="merito-item">
-    <img src="merito3.png" alt="Mérito 3" class="thumbnail" data-crop="cropada3.png" data-legend="Tabela do Mérito 3">
-    <div class="legend"></div>
-  </div>
-</div>
-
-<style>
-  .meritos-container {
-    display: flex;
-    flex-direction: column; /* empilha verticalmente */
-    align-items: center;    /* centraliza horizontalmente */
-    gap: 20px;              /* espaço entre as imagens */
-  }
-
-  .merito-item {
-    text-align: center;
-  }
-
-  .thumbnail {
-    width: 150px;
-    cursor: pointer;
-    border: 3px solid transparent;
-    transition: border 0.3s;
-  }
-
-  .thumbnail:hover {
-    border: 3px solid gold;
-  }
-
-  .legend {
-    font-style: italic;
-    margin-top: 5px;
-    color: #333;
-    min-height: 1em; /* mantém espaço mesmo sem clique */
-  }
-</style>
-
-<script>
-  const thumbnails = document.querySelectorAll('.thumbnail');
-
-  thumbnails.forEach(thumb => {
-    thumb.addEventListener('click', () => {
-      const legendDiv = thumb.nextElementSibling; // pega o div da legenda
-      thumb.src = thumb.dataset.crop;             // troca a imagem pela cropada
-      legendDiv.textContent = thumb.dataset.legend; // mostra a legendinha
-    });
-  });
-</script>
+<!DOCTYPE html>  <html lang="pt-BR">  
+<head>  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Placar de Méritos - Real Value</title>  
+  <link rel="stylesheet" href="style.css">  
+</head>  
+<body class="dark">  
+  <header>  
+    <img src="Logo.png" alt="Logo Real Value" class="logo">  
+    <h1>🏆 Placar de Méritos - Real Value</h1>  
+    <div class="controls">  
+      <button id="themeBtn">☀️ Modo Claro</button>  
+      <button id="orderBtn">🔀 Ordenar A-Z</button>  
+    </div>  
+  </header>    <table id="scoreboard">  
+    <thead>  
+      <tr>  
+        <th>Posição</th>  
+        <th>Jogador</th>  
+        <th>Méritos</th>  
+        <th>Frações</th>  
+      </tr>  
+    </thead>  
+    <tbody>  
+      <!-- preenchido via script.js -->  
+    </tbody>  
+  </table>    <h2>📊 Tabelas de Méritos</h2>  
+  <div class="merito-container">  
+    <img src="merito1.png" alt="Tabela de Mérito 1">  
+    <img src="merito2.png" alt="Tabela de Mérito 2">  
+    <img src="merito3.png" alt="Tabela de Mérito 3">  
+  </div>    <footer>  
+    <p>✨ Real Value Ltda. - Sistema de Méritos &copy; 2025 ✨</p>  
+  </footer>    <script src="script.js"></script>  </body>  
+</html>
