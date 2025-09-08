@@ -6,40 +6,37 @@
 <title>Sobre o Real Value</title>
 <link rel="stylesheet" href="style.css">
 <style>
-  /* ===== Fundo e cores ===== */
-  body, main, section, h1, h2, p {
-    color: #fff !important; /* força texto branco */
-  }
   body {
-    background-color: #1a1f36 !important; /* fundo azul escuro */
+    background-color: #1a1f36; /* azul escuro */
+    color: #fff; /* texto branco */
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
-  }
-  main.content, section {
-    background-color: #1a1f36 !important; /* garante que seções não fiquem brancas */
+    line-height: 1.8;
   }
 
-  /* ===== Header e Logo ===== */
   header {
     text-align: center;
     padding: 20px 0;
     position: relative;
   }
+
   .logo {
     width: 150px;
     animation: glow 3s ease-in-out infinite alternate;
   }
+
   @keyframes glow {
     0% { filter: drop-shadow(0 0 5px #fff); }
     50% { filter: drop-shadow(0 0 15px #fff); }
     100% { filter: drop-shadow(0 0 5px #fff); }
   }
+
   h1 {
     margin: 10px 0;
     font-size: 1.8rem;
   }
+
   .banner {
     width: 100%;
     background: linear-gradient(90deg, #28304b, #1a1f36);
@@ -51,13 +48,12 @@
     margin-bottom: 20px;
   }
 
-  /* ===== Conteúdo ===== */
   main.content {
     max-width: 900px;
     margin: 0 auto 30px auto;
     padding: 0 20px;
-    line-height: 1.8;
   }
+
   section {
     margin-bottom: 25px;
     opacity: 0;
@@ -65,10 +61,12 @@
     transition: all 0.8s ease-out;
     padding: 10px 15px;
   }
+
   section.visible {
     opacity: 1;
     transform: translateY(0);
   }
+
   h2 {
     color: #FFD700;
     font-size: 1.5rem;
@@ -77,13 +75,13 @@
     display: inline-block;
     padding-bottom: 2px;
   }
+
   .highlight {
     color: #FFD700;
     font-weight: bold;
     text-shadow: 0 0 5px #FFD700;
   }
 
-  /* ===== Botões ===== */
   .btn-back, .btn-contact {
     border-radius: 12px;
     padding: 10px 25px;
@@ -94,24 +92,27 @@
     margin: 20px auto;
     transition: transform 0.2s, box-shadow 0.3s;
   }
+
   .btn-back {
     background-color: #FFD700;
     color: #000;
   }
+
   .btn-back:hover {
     transform: scale(1.05);
     box-shadow: 0 0 10px #FFD700;
   }
+
   .btn-contact {
     background-color: #25D366;
     color: #fff;
   }
+
   .btn-contact:hover {
     transform: scale(1.05);
     box-shadow: 0 0 10px #25D366;
   }
 
-  /* ===== Footer ===== */
   footer {
     text-align: center;
     padding: 15px 0;
@@ -133,54 +134,56 @@
 
 <main class="content">
   <section>
-    <h2>História e Conceito</h2>
-    <p>O <span class="highlight">Real Value</span> nasceu com o objetivo de criar uma comunidade organizada e colaborativa para jogadores de Brawl Stars. Fundado a partir de uma seleção criteriosa entre mais de 100 membros, o clube garante um grupo comprometido, competitivo e participativo. Nossa missão é unir diversão, integração e desenvolvimento estratégico em um ambiente seguro e bem estruturado.</p>
+    <h2>Quem Somos</h2>
+    <p>O <span class="highlight">Real Value</span> é uma comunidade sólida, organizada e reconhecida por sua disciplina, meritocracia e compromisso com a diversão e o crescimento coletivo. Sua origem está ligada à apuração rigorosa entre mais de 100 membros ativos, garantindo que apenas os mais engajados, dedicados e alinhados aos valores da comunidade façam parte do núcleo principal.</p>
+    <p>Atualmente, a comunidade conta com dois clubes oficiais: <span class="highlight">Real Value Red</span> e <span class="highlight">Real Value Yellow</span>, que representam os pilares de excelência e competição saudável. O Real Value busca unir jogadores em torno de desafios, aprendizado e entretenimento, mantendo sempre um ambiente seguro, justo e inspirador.</p>
   </section>
 
   <section>
-    <h2>Administração e Estrutura</h2>
-    <p>A governança do Real Value é baseada em um <span class="highlight">Conselho</span> que supervisiona todas as atividades da comunidade. Cada clube possui Presidente, Vice-Presidente e Peritos, garantindo organização e participação eficiente dos membros.</p>
+    <h2>Administração e Conselho</h2>
+    <p>A gestão do Real Value é conduzida pelo <span class="highlight">Conselho Administrativo</span>, responsável por decisões estratégicas, definição de regras e execução de torneios e eventos.</p>
+    <p>A estrutura do Conselho é composta por:</p>
+    <ul>
+      <li>Presidente do conselho: líder máximo do clube, supervisiona todas as operações e garante a integridade da comunidade.</li>
+      <li>Vice-Presidentes: moderam seus clubes específicos (Red e Yellow).</li>
+      <li>Peritos: auxiliam na administração dos torneios, verificação de resultados, monitoramento da participação e suporte aos membros.</li>
+      <li>Integrantes: membros ativos que colaboram com engajamento e feedback para o desenvolvimento da comunidade.</li>
+    </ul>
+    <p>O Conselho mantém a transparência, organização e meritocracia, assegurando que todos os eventos e decisões sejam justos e alinhados com os valores do Real Value.</p>
   </section>
 
   <section>
-    <h2>Grupos e Comunicação</h2>
-    <p>A comunidade mantém canais de comunicação claros e estruturados: Chat Geral, Notícias e Novidades, Divulgações de artes e conteúdo criativo, Canal do YouTube oficial, e o Grupo da Administração para decisões estratégicas e coordenação do clube.</p>
+    <h2>Grupos e Canais da Comunidade</h2>
+    <p>Para manter a comunicação organizada, o Real Value possui grupos e canais distintos, cada um com objetivos específicos:</p>
+    <ul>
+      <li>Chat Geral: espaço livre para conversas, interação e construção de amizade entre os membros.</li>
+      <li>Notícias e Novidades do Brawl: atualizações e informações sobre o jogo, estratégias e eventos oficiais.</li>
+      <li>Campeonatos Internos: grupo exclusivo para torneios internos, regras, resultados e premiações.</li>
+      <li>Divulgações: espaço para que os membros compartilhem suas artes, vídeos, fanarts e conteúdo de YouTube.</li>
+      <li>Conselho Administrativo: canal fechado para a coordenação, decisões estratégicas e planejamento.</li>
+    </ul>
   </section>
 
   <section>
     <h2>Campeonatos Internos</h2>
-    <p>Os torneios do Real Value ocorrem mensalmente, podendo ser solo, duplas ou trios, com diferentes modos de competição. A participação é opcional, mas contribui para o ganho de Méritos e frações de Mérito. Todos os torneios oferecem premiações que impactam diretamente no <span class="highlight">Real Value Awards</span>, a premiação anual da comunidade, incentivando engajamento e reconhecimento dos membros.</p>
-  </section>
+    <p>Os campeonatos internos são um dos grandes diferenciais do Real Value. Eles ocorrem mensalmente e podem variar entre partidas solo, duplas ou trios, com modos de jogo diferentes.</p>
+    <h3>Participação e Frequência</h3>
+    <p>Opcional, mas altamente recomendada para quem deseja conquistar Méritos e Frações de Mérito. Cada torneio tem duração aproximada de 1 a 2 semanas, com datas e horários comunicados previamente. Jogadores devem cumprir os prazos de participação para validar seus resultados.</p>
 
-  <section>
-    <h2>Valores da Comunidade</h2>
-    <p>O Real Value valoriza a <span class="highlight">organização, integridade, competitividade e diversão</span>. Cada ação é planejada para estimular crescimento individual e coletivo, incentivando participação ativa, respeito mútuo e desenvolvimento estratégico dos jogadores.</p>
-  </section>
+    <h3>Estrutura dos Clubes nos Torneios</h3>
+    <p>Cada clube conta com: Presidente, Vice-Presidente, Peritos e Integrantes. Os Peritos asseguram a organização do torneio, verificam resultados e acompanham a participação dos membros.</p>
 
-  <button class="btn-contact" onclick="window.location.href='https://wa.me/seulinkdoadm'">
-    Entrar em contato com a administração
-  </button>
+    <h3>Modos de Torneio</h3>
+    <ul>
+      <li><span class="highlight">Modo Descanso:</span> garante que campeões de um torneio individual fiquem de fora da próxima edição, permitindo que outros membros se destaquem.</li>
+      <li><span class="highlight">Trono Dourado (1ª Divisão):</span> divisão de elite, com jogadores de melhor desempenho e pontuação acumulada.</li>
+      <li><span class="highlight">Trono Prateado (2ª Divisão):</span> divisão de desenvolvimento, ideal para novos membros ou jogadores em ritmo de aprendizado.</li>
+      <li><span class="highlight">Modo Panelinha:</span> duplas ou trios fixos formados por amizade ou confiança; confrontos equilibrados entre equipes.</li>
+      <li><span class="highlight">Modo Aleatório:</span> equipes formadas aleatoriamente para incentivar integração e estratégia coletiva.</li>
+    </ul>
 
-  <button class="btn-back" onclick="window.location.href='index.html'">
-    Voltar ao Placar de Méritos
-  </button>
-</main>
-
-<footer>
-  <p>Real Value Ltda. - Sistema de Méritos &copy; 2025 | Criado por Frost</p>
-</footer>
-
-<script>
-  // Animação suave ao rolar
-  const sections = document.querySelectorAll('section');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-  sections.forEach(section => observer.observe(section));
-</script>
-</body>
-</html>
+    <h3>Premiações</h3>
+    <ul>
+      <li>Frações de Mérito e Méritos: dependem do desempenho individual e da participação.</li>
+      <li>Premiações adicionais: passes, gift cards e valores em dinheiro.</li>
+      <li><span class="highlight">Real Value Awards:</span> méritos acumulados impactam a premiação anual, destacando os melhores jogadores da comunidade.</
