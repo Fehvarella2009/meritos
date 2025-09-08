@@ -46,20 +46,19 @@
       min-height: 1em;
     }
 
-    /* Botão Sobre e Contato no canto superior esquerdo */
+    /* Botão Sobre o RV e Contato abaixo da logo */
     .about-contact-btn {
-      position: absolute;
-      top: 10px;
-      left: 10px;
+      display: block;
+      margin: 10px auto; /* centralizado */
       background-color: #25D366; /* verde WhatsApp */
       color: #fff;
       border: none;
       border-radius: 5px;
-      padding: 8px 15px;
+      padding: 6px 15px;
+      font-size: 0.9rem;
       cursor: pointer;
       font-weight: bold;
       transition: background 0.3s;
-      z-index: 1000;
     }
     .about-contact-btn:hover {
       background-color: #1ebe57; /* verde escuro ao passar o mouse */
@@ -67,11 +66,12 @@
   </style>
 </head>
 <body class="dark">
-  <!-- Botão Sobre e Contato no canto superior esquerdo -->
-  <button class="about-contact-btn" onclick="window.location.href='sobre_real_value.html'">Sobre e Contato</button>
-
   <header>
     <img src="Logo.png" alt="Logo Real Value" class="logo">
+    
+    <!-- Botão Sobre o RV e Contato abaixo da logo -->
+    <button class="about-contact-btn" onclick="window.location.href='sobre_real_value.html'">Sobre o RV e Contato</button>
+    
     <h1>🏆 Placar de Méritos - Real Value</h1>
     <div class="controls">
       <button id="themeBtn">☀️ Modo Claro</button>
