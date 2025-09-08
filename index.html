@@ -45,6 +45,35 @@
       color: #333;
       min-height: 1em;
     }
+
+    /* ======= Botão discreto Sobre e Contato ======= */
+    .sobre-btn {
+      display: inline-block;
+      margin: 15px auto 0 auto;
+      padding: 8px 18px;
+      background-color: #444;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    .sobre-btn:hover {
+      background-color: #666;
+      box-shadow: 0 0 8px gold;
+    }
+
+    body.light .sobre-btn {
+      background-color: #aaa;
+      color: #111;
+    }
+
+    body.light .sobre-btn:hover {
+      background-color: #daa520;
+      color: #fff;
+      box-shadow: 0 0 8px #daa520;
+    }
   </style>
 </head>
 <body class="dark">
@@ -55,6 +84,9 @@
       <button id="themeBtn">☀️ Modo Claro</button>
       <button id="orderBtn">🔀 Ordenar A-Z</button>
     </div>
+
+    <!-- Botão discreto -->
+    <a href="sobre.html" class="sobre-btn">Sobre e Contato</a>
   </header>
 
   <!-- ======= Tabela de Jogadores ======= -->
@@ -95,43 +127,33 @@
 
   <script src="script.js"></script> <!-- seu script original do placar -->
 
-  <!-- ======= Script das Tabelas de Méritos com legendinha dinâmica ======= -->
+  <!-- Script Tabelas de Méritos -->
   <script>
     const meritos = document.querySelectorAll('.merito-item img');
-
     meritos.forEach(img => {
       let showingCrop = false;
       const legendDiv = img.nextElementSibling;
 
       img.addEventListener('click', () => {
-        // aplica fade-out
         img.classList.add('fade-out');
 
         setTimeout(() => {
-          if (!showingCrop) {
-            img.src = img.dataset.crop; // mostra cropada
+          if(!showingCrop){
+            img.src = img.dataset.crop;
             legendDiv.textContent = "Clique para visualizar a arte completa";
           } else {
-            img.src = img.dataset.original; // volta original
+            img.src = img.dataset.original;
             legendDiv.textContent = "Clique para visualizar a tabela maior";
           }
 
-          // aplica fade-in
           img.classList.remove('fade-out');
           img.classList.add('fade-in');
-
-          setTimeout(() => {
-            img.classList.remove('fade-in');
-          }, 500);
+          setTimeout(()=>{img.classList.remove('fade-in');},500);
 
           showingCrop = !showingCrop;
-        }, 300);
+        },300);
       });
     });
   </script>
-</body>
-</html>
-  </script>
-
 </body>
 </html>
