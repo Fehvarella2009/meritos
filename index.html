@@ -46,37 +46,30 @@
       min-height: 1em;
     }
 
-    /* ======= Botão discreto Sobre e Contato ======= */
-    .sobre-btn {
-      display: inline-block;
-      margin: 15px auto 0 auto;
-      padding: 8px 18px;
+    /* Botão Sobre e Contato no canto superior direito */
+    .about-contact-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
       background-color: #444;
       color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 15px;
+      cursor: pointer;
       font-weight: bold;
-      transition: background 0.3s, box-shadow 0.3s;
+      transition: background 0.3s;
+      z-index: 1000;
     }
-
-    .sobre-btn:hover {
+    .about-contact-btn:hover {
       background-color: #666;
-      box-shadow: 0 0 8px gold;
-    }
-
-    body.light .sobre-btn {
-      background-color: #aaa;
-      color: #111;
-    }
-
-    body.light .sobre-btn:hover {
-      background-color: #daa520;
-      color: #fff;
-      box-shadow: 0 0 8px #daa520;
     }
   </style>
 </head>
 <body class="dark">
+  <!-- Botão Sobre e Contato no canto superior direito -->
+  <button class="about-contact-btn" onclick="window.location.href='sobre_real_value.html'">Sobre e Contato</button>
+
   <header>
     <img src="Logo.png" alt="Logo Real Value" class="logo">
     <h1>🏆 Placar de Méritos - Real Value</h1>
@@ -84,9 +77,6 @@
       <button id="themeBtn">☀️ Modo Claro</button>
       <button id="orderBtn">🔀 Ordenar A-Z</button>
     </div>
-
-    <!-- Botão discreto -->
-    <a href="sobre.html" class="sobre-btn">Sobre e Contato</a>
   </header>
 
   <!-- ======= Tabela de Jogadores ======= -->
@@ -127,9 +117,10 @@
 
   <script src="script.js"></script> <!-- seu script original do placar -->
 
-  <!-- Script Tabelas de Méritos -->
+  <!-- ======= Script das Tabelas de Méritos com legendinha dinâmica ======= -->
   <script>
     const meritos = document.querySelectorAll('.merito-item img');
+
     meritos.forEach(img => {
       let showingCrop = false;
       const legendDiv = img.nextElementSibling;
@@ -138,20 +129,23 @@
         img.classList.add('fade-out');
 
         setTimeout(() => {
-          if(!showingCrop){
-            img.src = img.dataset.crop;
+          if (!showingCrop) {
+            img.src = img.dataset.crop; 
             legendDiv.textContent = "Clique para visualizar a arte completa";
           } else {
-            img.src = img.dataset.original;
+            img.src = img.dataset.original; 
             legendDiv.textContent = "Clique para visualizar a tabela maior";
           }
 
           img.classList.remove('fade-out');
           img.classList.add('fade-in');
-          setTimeout(()=>{img.classList.remove('fade-in');},500);
+
+          setTimeout(() => {
+            img.classList.remove('fade-in');
+          }, 500);
 
           showingCrop = !showingCrop;
-        },300);
+        }, 300);
       });
     });
   </script>
