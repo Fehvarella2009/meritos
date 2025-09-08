@@ -6,24 +6,16 @@
   <title>Sobre o Real Value</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    body { 
-      background-color: #1a1f36; 
-      color: #fff; 
-      font-family: Arial, sans-serif; 
-      margin: 0; 
-      padding: 0; 
+    body {
+      background-color: #1a1f36; /* mesmo azul do placar */
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
     }
     header {
       text-align: center;
       padding: 20px 0;
-    }
-    .banner {
-      width: 100%;
-      max-height: 150px;
-      object-fit: cover;
-      display: block;
-      margin-bottom: 10px;
-      border-bottom: 2px solid #FFD700;
     }
     .logo {
       width: 150px;
@@ -31,7 +23,7 @@
     }
     @keyframes glow {
       0% { filter: drop-shadow(0 0 5px #fff); }
-      50% { filter: drop-shadow(0 0 20px #fff); }
+      50% { filter: drop-shadow(0 0 15px #fff); }
       100% { filter: drop-shadow(0 0 5px #fff); }
     }
     h1 {
@@ -51,31 +43,27 @@
       color: #FFD700;
       font-size: 1.4rem;
       margin-bottom: 10px;
-      position: relative;
-    }
-    h2::after {
-      content: '';
-      display: block;
-      width: 50px;
-      height: 2px;
-      background: #FFD700;
-      margin-top: 5px;
+      border-bottom: 2px solid #FFD700;
+      display: inline-block;
+      padding-bottom: 2px;
     }
     .highlight {
       color: #FFD700;
       font-weight: bold;
     }
-    .btn-back {
-      background-color: #FFD700;
-      color: #000;
+    .btn-back, .btn-contact {
       border-radius: 12px;
       padding: 8px 20px;
       font-size: 1rem;
       border: none;
       cursor: pointer;
       display: block;
-      margin: 30px auto 10px auto;
+      margin: 15px auto;
       transition: transform 0.2s;
+    }
+    .btn-back {
+      background-color: #FFD700;
+      color: #000;
     }
     .btn-back:hover {
       transform: scale(1.05);
@@ -83,14 +71,6 @@
     .btn-contact {
       background-color: #25D366; /* verde estilo WhatsApp */
       color: #fff;
-      border-radius: 12px;
-      padding: 8px 20px;
-      font-size: 1rem;
-      border: none;
-      cursor: pointer;
-      display: block;
-      margin: 10px auto 50px auto;
-      transition: transform 0.2s;
     }
     .btn-contact:hover {
       transform: scale(1.05);
@@ -105,7 +85,6 @@
 </head>
 <body>
   <header>
-    <img src="banner.png" alt="Banner Real Value" class="banner">
     <img src="Logo.png" alt="Logo Real Value" class="logo">
     <h1>Sobre o Real Value</h1>
   </header>
@@ -118,7 +97,7 @@
 
     <section>
       <h2>Estrutura e Administração</h2>
-      <p>A administração é composta por um <span class="highlight">Presidente, Vice-Presidente e Peritos</span> que supervisionam campeonatos e eventos internos. A organização é rígida, mantendo tudo documentado e transparente para os membros.</p>
+      <p>A administração é composta por um <span class="highlight">Presidente, Vice-Presidente e Peritos</span> que supervisionam campeonatos e eventos internos. A organização é rígida, mantendo tudo documentado e transparente para os membros. Além disso, há grupos específicos para cada clube e para a administração.</p>
     </section>
 
     <section>
@@ -126,7 +105,7 @@
       <p>Os torneios internos ocorrem mensalmente, variando entre partidas solo, duplas ou trios. Participantes podem conquistar <span class="highlight">frações de Mérito e Méritos</span>, sem custo de inscrição. As divisões incluem:</p>
       <ul>
         <li><span class="highlight">Modo Descanso:</span> campeão descansa na próxima edição.</li>
-        <li><span class="highlight">Divisão Laranja:</span> primeira divisão com jogadores de maior desempenho.</li>
+        <li><span class="highlight">Divisão Real:</span> primeira divisão com jogadores de maior desempenho.</li>
         <li><span class="highlight">Divisão Cinza:</span> segunda divisão para jogadores em desenvolvimento.</li>
         <li><span class="highlight">Modo Panelinha:</span> duplas ou trios fixos.</li>
         <li><span class="highlight">Modo Aleatório:</span> equipes formadas aleatoriamente.</li>
