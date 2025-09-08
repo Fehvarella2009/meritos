@@ -56,7 +56,6 @@ const players = [
   { name: "Spomie", merits: 0, fractions: 0 },
   { name: "Sprout", merits: 2, fractions: 3 },
   { name: "Sr. White :)", merits: 0, fractions: 0 },
-  { name: "Thxr<3", merits: 2, fractions: 3 },
   { name: "Tiago70", merits: 2, fractions: 3 },
   { name: "Volpirs", merits: 8, fractions: 0 },
   { name: "Wolf", merits: 0, fractions: 0 }
