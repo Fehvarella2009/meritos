@@ -6,168 +6,145 @@
   <title>Sobre o Real Value</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0B1D3A; /* azul escuro */
-      color: #f0f0f0;
-      transition: background 0.3s, color 0.3s;
+    body { 
+      background-color: #1a1f36; 
+      color: #fff; 
+      font-family: Arial, sans-serif; 
+      margin: 0; 
+      padding: 0; 
     }
-
-    body.light {
-      background-color: #e0f0ff;
-      color: #0b1d3a;
-    }
-
     header {
       text-align: center;
-      padding: 20px;
+      padding: 20px 0;
     }
-
-    .logo {
-      width: 120px;
+    .banner {
+      width: 100%;
+      max-height: 150px;
+      object-fit: cover;
       display: block;
-      margin: 0 auto 10px auto;
-      transition: transform 0.3s;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #FFD700;
     }
-
-    .logo:hover {
-      transform: scale(1.05);
+    .logo {
+      width: 150px;
+      animation: glow 3s ease-in-out infinite alternate;
     }
-
+    @keyframes glow {
+      0% { filter: drop-shadow(0 0 5px #fff); }
+      50% { filter: drop-shadow(0 0 20px #fff); }
+      100% { filter: drop-shadow(0 0 5px #fff); }
+    }
     h1 {
-      margin: 10px 0;
+      margin-top: 10px;
       font-size: 1.8rem;
     }
-
-    .btn {
-      padding: 8px 18px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 0.95rem;
-      transition: transform 0.2s, background 0.3s;
-      margin: 10px auto;
-      display: block;
-    }
-
-    .btn:hover {
-      transform: scale(1.05);
-    }
-
-    .btn-back {
-      background-color: #FFD700; /* amarelo */
-      color: #0b1d3a;
-    }
-
-    .btn-back:hover {
-      background-color: #e6c200;
-    }
-
-    .btn-contact {
-      background-color: #25D366; /* verde */
-      color: #fff;
-    }
-
-    .btn-contact:hover {
-      background-color: #1ebe57;
-    }
-
-    .content {
+    main.content {
       max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
+      margin: 20px auto;
+      padding: 0 15px;
       line-height: 1.6;
     }
-
-    .highlight {
-      font-weight: bold;
-      color: #25D366; /* verde discreto */
+    section {
+      margin-bottom: 30px;
     }
-
+    h2 {
+      color: #FFD700;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    h2::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 2px;
+      background: #FFD700;
+      margin-top: 5px;
+    }
+    .highlight {
+      color: #FFD700;
+      font-weight: bold;
+    }
+    .btn-back {
+      background-color: #FFD700;
+      color: #000;
+      border-radius: 12px;
+      padding: 8px 20px;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      display: block;
+      margin: 30px auto 10px auto;
+      transition: transform 0.2s;
+    }
+    .btn-back:hover {
+      transform: scale(1.05);
+    }
+    .btn-contact {
+      background-color: #25D366; /* verde estilo WhatsApp */
+      color: #fff;
+      border-radius: 12px;
+      padding: 8px 20px;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      display: block;
+      margin: 10px auto 50px auto;
+      transition: transform 0.2s;
+    }
+    .btn-contact:hover {
+      transform: scale(1.05);
+    }
     footer {
       text-align: center;
-      padding: 15px;
-      font-size: 0.9rem;
-      background-color: rgba(0,0,0,0.2);
-      margin-top: 30px;
-    }
-
-    /* ===== Animações ===== */
-    .fade-item {
-      opacity: 0;
-      transform: translateY(15px);
-      animation: fadeInUp 0.7s forwards;
-    }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      padding: 15px 0;
+      border-top: 1px solid #444;
+      margin-top: 50px;
     }
   </style>
 </head>
-<body class="dark">
+<body>
   <header>
+    <img src="banner.png" alt="Banner Real Value" class="banner">
     <img src="Logo.png" alt="Logo Real Value" class="logo">
-    <button class="btn btn-back" onclick="window.location.href='index.html'">Voltar ao Placar</button>
     <h1>Sobre o Real Value</h1>
   </header>
 
-  <div class="content">
-    <p class="fade-item" style="animation-delay: 0.1s;">
-      O <span class="highlight">Real Value</span> é um clube organizado e estruturado, administrado por um <span class="highlight">Conselho</span> dedicado, que supervisiona toda a atividade da comunidade. Ele é resultado de uma apuração entre mais de <span class="highlight">100 membros</span>.
-    </p>
+  <main class="content">
+    <section>
+      <h2>História e Conceito</h2>
+      <p>O <span class="highlight">Real Value</span> é uma comunidade organizada baseada em um <span class="highlight">conselho</span> de administradores, resultado de uma apuração entre mais de 100 membros. Nossa comunidade possui grupos de <span class="highlight">chat geral, notícias e novidades do Brawl</span>, além de canais para <span class="highlight">divulgar artes</span> e nosso <span class="highlight">canal no YouTube</span>.</p>
+    </section>
 
-    <p class="fade-item" style="animation-delay: 0.2s;">
-      A comunidade do Real Value possui diversos grupos, incluindo <span class="highlight">Real Value Red</span>, <span class="highlight">Real Value Yellow</span>, canais de <span class="highlight">divulgação de arte</span>, <span class="highlight">chat geral</span>, <span class="highlight">notícias e novidades do Brawl</span> e grupos exclusivos da administração.
-    </p>
+    <section>
+      <h2>Estrutura e Administração</h2>
+      <p>A administração é composta por um <span class="highlight">Presidente, Vice-Presidente e Peritos</span> que supervisionam campeonatos e eventos internos. A organização é rígida, mantendo tudo documentado e transparente para os membros.</p>
+    </section>
 
-    <p class="fade-item" style="animation-delay: 0.3s;">
-      O clube promove <span class="highlight">campeonatos internos</span> mensais, com diferentes modos de jogo, como partidas solo, duplas ou trios, seguindo um sistema inspirado em realeza que substitui o antigo conceito de “cauda”. Cada torneio é organizado com atenção, sem custo algum, oferecendo premiações como passes, valores em dinheiro ou gift cards.
-    </p>
+    <section>
+      <h2>Campeonatos Internos</h2>
+      <p>Os torneios internos ocorrem mensalmente, variando entre partidas solo, duplas ou trios. Participantes podem conquistar <span class="highlight">frações de Mérito e Méritos</span>, sem custo de inscrição. As divisões incluem:</p>
+      <ul>
+        <li><span class="highlight">Modo Descanso:</span> campeão descansa na próxima edição.</li>
+        <li><span class="highlight">Divisão Laranja:</span> primeira divisão com jogadores de maior desempenho.</li>
+        <li><span class="highlight">Divisão Cinza:</span> segunda divisão para jogadores em desenvolvimento.</li>
+        <li><span class="highlight">Modo Panelinha:</span> duplas ou trios fixos.</li>
+        <li><span class="highlight">Modo Aleatório:</span> equipes formadas aleatoriamente.</li>
+      </ul>
+      <p>Os clubes principais são apenas dois: <span class="highlight">Red</span> e <span class="highlight">Yellow</span>.</p>
+    </section>
 
-    <p class="fade-item" style="animation-delay: 0.4s;">
-      O <span class="highlight">sistema de torneios</span> inclui:
-    </p>
-
-    <ul class="fade-item" style="animation-delay: 0.5s;">
-      <li><span class="highlight">Modo Descanso:</span> equilíbrio entre competições, permitindo que campeões descansem e outros membros tenham oportunidade de se destacar.</li>
-      <li><span class="highlight">Divisão Laranja:</span> jogadores com melhor desempenho acumulado.</li>
-      <li><span class="highlight">Divisão Cinza:</span> jogadores em desenvolvimento ou retomando ritmo.</li>
-      <li><span class="highlight">Modo Panelinha:</span> equipes fixas formadas por amizade ou confiança.</li>
-      <li><span class="highlight">Modo Aleatório:</span> equipes formadas aleatoriamente, promovendo integração e cooperação.</li>
-    </ul>
-
-    <p class="fade-item" style="animation-delay: 0.6s;">
-      Participar dos torneios é opcional, mas quem participa pode conquistar <span class="highlight">frações de Mérito</span> e <span class="highlight">Méritos</span>, dependendo do desempenho, engajamento e cumprimento das regras.
-    </p>
-
-    <p class="fade-item" style="animation-delay: 0.7s;">
-      O Real Value mantém apenas dois clubes principais, <span class="highlight">Red</span> e <span class="highlight">Yellow</span>, equilibrando competitividade e diversão.
-    </p>
-
-    <p class="fade-item" style="animation-delay: 0.8s;">
-      Os torneios e premiações incentivam todos a participar ativamente, consolidando o clube como referência em organização, engajamento e respeito entre membros.
-    </p>
-
-    <button class="btn btn-contact fade-item" style="animation-delay: 0.9s;" onclick="window.location.href='https://wa.me/SEULINK'">
-      Entrar em contato com o presidente
+    <button class="btn-contact" onclick="window.location.href='https://wa.me/seulinkdoadm'">
+      Entrar em contato com a administração
     </button>
-  </div>
+
+    <button class="btn-back" onclick="window.location.href='index.html'">
+      Voltar ao Placar de Méritos
+    </button>
+  </main>
 
   <footer>
     <p>Real Value Ltda. - Sistema de Méritos &copy; 2025 | Criado por Frost</p>
   </footer>
-
-  <script>
-    // Alternar modo claro/escuro
-    const themeBtn = document.getElementById('themeBtn');
-    themeBtn?.addEventListener('click', () => {
-      document.body.classList.toggle('light');
-    });
-  </script>
 </body>
 </html>
