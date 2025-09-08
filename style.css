@@ -180,3 +180,22 @@ body.dark .bronze, body:not(.dark) .bronze { color: #cd7f32; }
 /* Rodapé em ambos os modos */
 body.dark footer { background-color: #0d1a2a; color: #f1f1f1; }
 body:not(.dark) footer { background-color: #e0e0e0; color: #111111; }
+
+/* Botão Sobre discreto em vermelho */
+.btn-about {
+  background-color: #B22222; /* vermelho mais escuro e discreto */
+  color: #fff;
+  border-radius: 25px;      /* bordas mais arredondadas */
+  padding: 6px 16px;         /* tamanho menor */
+  font-size: 0.9rem;
+  display: block;
+  margin: 10px auto;         /* centralizado abaixo da logo */
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.btn-about:hover {
+  background-color: #8B1A1A; /* hover mais escuro */
+  transform: scale(1.05);
+}
