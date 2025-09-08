@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -6,9 +6,12 @@
 <title>Sobre o Real Value</title>
 <link rel="stylesheet" href="style.css">
 <style>
+  /* ===== Fundo e cores ===== */
+  body, main, section, h1, h2, p, li {
+    color: #fff !important; /* força texto branco */
+  }
   body {
     background-color: #1a1f36 !important; /* fundo azul escuro */
-    color: #fff;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -17,6 +20,8 @@
   main.content, section {
     background-color: #1a1f36 !important; /* garante que seções não fiquem brancas */
   }
+
+  /* ===== Header e Logo ===== */
   header {
     text-align: center;
     padding: 20px 0;
@@ -45,6 +50,8 @@
     letter-spacing: 1px;
     margin-bottom: 20px;
   }
+
+  /* ===== Conteúdo ===== */
   main.content {
     max-width: 900px;
     margin: 0 auto 30px auto;
@@ -75,6 +82,8 @@
     font-weight: bold;
     text-shadow: 0 0 5px #FFD700;
   }
+
+  /* ===== Botões ===== */
   .btn-back, .btn-contact {
     border-radius: 12px;
     padding: 10px 25px;
@@ -101,6 +110,8 @@
     transform: scale(1.05);
     box-shadow: 0 0 10px #25D366;
   }
+
+  /* ===== Footer ===== */
   footer {
     text-align: center;
     padding: 15px 0;
@@ -194,5 +205,7 @@
   }, { threshold: 0.1 });
   sections.forEach(section => observer.observe(section));
 </script>
+</body>
+</html>
 </body>
 </html>
