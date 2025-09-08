@@ -46,32 +46,33 @@
       min-height: 1em;
     }
 
-    /* Botão Sobre o RV e Contato abaixo da logo */
-    .about-contact-btn {
-      display: block;
-      margin: 10px auto; /* centralizado */
-      background-color: #25D366; /* verde WhatsApp */
+    /* ===== Botão Sobre discreto em vermelho ===== */
+    .btn-about {
+      background-color: #B22222; /* vermelho mais escuro */
       color: #fff;
-      border: none;
-      border-radius: 5px;
-      padding: 6px 15px;
+      border-radius: 25px;       /* bordas arredondadas */
+      padding: 6px 16px;         /* tamanho menor */
       font-size: 0.9rem;
+      display: block;
+      margin: 10px auto;         /* centralizado abaixo da logo */
+      border: none;
       cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s;
+      transition: transform 0.2s, background 0.3s;
     }
-    .about-contact-btn:hover {
-      background-color: #1ebe57; /* verde escuro ao passar o mouse */
+
+    .btn-about:hover {
+      background-color: #8B1A1A; /* hover mais escuro */
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body class="dark">
   <header>
     <img src="Logo.png" alt="Logo Real Value" class="logo">
-    
-    <!-- Botão Sobre o RV e Contato abaixo da logo -->
-    <button class="about-contact-btn" onclick="window.location.href='sobre_real_value.html'">Sobre o RV e Contato</button>
-    
+    <!-- Botão discreto em vermelho -->
+    <button class="btn-about" onclick="window.location.href='sobre.html'">
+      Sobre o RV e Contato
+    </button>
     <h1>🏆 Placar de Méritos - Real Value</h1>
     <div class="controls">
       <button id="themeBtn">☀️ Modo Claro</button>
@@ -126,17 +127,19 @@
       const legendDiv = img.nextElementSibling;
 
       img.addEventListener('click', () => {
+        // aplica fade-out
         img.classList.add('fade-out');
 
         setTimeout(() => {
           if (!showingCrop) {
-            img.src = img.dataset.crop; 
+            img.src = img.dataset.crop; // mostra cropada
             legendDiv.textContent = "Clique para visualizar a arte completa";
           } else {
-            img.src = img.dataset.original; 
+            img.src = img.dataset.original; // volta original
             legendDiv.textContent = "Clique para visualizar a tabela maior";
           }
 
+          // aplica fade-in
           img.classList.remove('fade-out');
           img.classList.add('fade-in');
 
