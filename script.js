@@ -11,6 +11,7 @@ const players = [
   { name: "Borges", merits: 7, fractions: 0 },
   { name: "CoragemTheDog", merits: 5, fractions: 0 },
   { name: "Dark Jeff", merits: 3, fractions: 0 },
+  { name: "Dayan", merits: 4, fractions: 3 },
   { name: "Deus Shelby", merits: 13, fractions: 2 },
   { name: "Dex", merits: 2, fractions: 0 },
   { name: "Digopom", merits: 2, fractions: 0 },
